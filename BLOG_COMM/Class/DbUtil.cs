@@ -37,8 +37,8 @@ namespace BLOG_COMM
             if (conn == null)
             {
                 conn = new SqlConnection();
-                conn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + Application.StartupPath + @"\marbling.mdf;Integrated Security=True";
-                //conn.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\summy\source\repos\BLOG_COMM\BLOG_COMM\marbling.mdf; Integrated Security = True";
+                //conn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + Application.StartupPath + @"\marbling.mdf;Integrated Security=True";
+                conn.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\summy\source\repos\BLOG_COMM\BLOG_COMM\marbling.mdf; Integrated Security = True";
             }
 
             if(conn.State==ConnectionState.Closed) conn.Open();
@@ -67,24 +67,6 @@ namespace BLOG_COMM
 
         }
 
-        //전체조회
-        public static void getAllFriends(DataGridView dgFriendsList)
-        {
-            DBinit();
-
-            String sql = "SELECT seq 번호 , Id as 아이디  ,nickname as 이름, blogtitle as 블로그명, blogurl as 블로그URL,add_date as 네이버등록일,gubun_type as 구분 FROM  Friends  order by seq asc";
-
-            cmd.CommandText = sql;
-                
-              
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dgFriendsList.DataSource = dt.DefaultView;
- 
-
-        }
 
         public static void searchFriends(DataGridView dgFriendsList, string searchName="",string searchBlogTitle="", string gubun="" ,string naverid="")
         {
@@ -107,6 +89,9 @@ namespace BLOG_COMM
             {
                 sql += " AND  id = N'" + naverid + "' ";
             }
+
+             sql += " AND  owner = N'" + Common.currUser.Id + "' ";
+
             sql += " order by seq asc ";
             Console.WriteLine(sql);
             cmd.CommandText = sql;
@@ -129,7 +114,7 @@ namespace BLOG_COMM
 
 
                 cmd.CommandType = CommandType.Text;
-                String sql = " INSERT  INTO Friends(Id,nickname,blogtitle, blogurl,add_date,gubun_type) values( @friendId,@nickname,@blogtitle, @blogurl,@add_date,@gubun_type) ";
+                String sql = " INSERT  INTO Friends(Id,nickname,blogtitle, blogurl,add_date,gubun_type,owner) values( @friendId,@nickname,@blogtitle, @blogurl,@add_date,@gubun_type,@owner) ";
                 cmd.CommandText = sql;
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@friendId", friendId);
@@ -138,7 +123,8 @@ namespace BLOG_COMM
                 cmd.Parameters.AddWithValue("@blogurl", blogurl);
                 cmd.Parameters.AddWithValue("@add_date", add_date);
                 cmd.Parameters.AddWithValue("@gubun_type", gubun_type);
-                try
+                cmd.Parameters.AddWithValue("@owner", Common.currUser.Id);
+            try
                 {
                     int result= cmd.ExecuteNonQuery();
                     Console.WriteLine(result.ToString(), "insert conunt");
@@ -163,8 +149,9 @@ namespace BLOG_COMM
 
   
                 cmd.CommandType = CommandType.Text;
-                String sql = " DELETE  FROM  Friends ";
-                cmd.CommandText = sql;
+                String sql = " DELETE  FROM  Friends   ";
+                sql += " WHERE  owner = N'" + Common.currUser.Id + "' ";
+            cmd.CommandText = sql;
 
                 try
                 {
@@ -206,6 +193,9 @@ namespace BLOG_COMM
             {
                 sql += " AND  id = N'" + naverid + "' ";
             }
+
+            sql += " AND  owner = N'" + Common.currUser.Id + "' ";
+
             sql += " order by reg_dtm desc ";
             Console.WriteLine(sql);
             cmd.CommandText = sql;
@@ -221,7 +211,7 @@ namespace BLOG_COMM
             }
             catch
             {
-                MessageBox.Show("데이터가 없습니다.");
+                MessageBox.Show("에러가 발생했어요.");
             }
 
 

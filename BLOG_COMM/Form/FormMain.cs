@@ -763,11 +763,7 @@ namespace BLOG_COMM
 		/* 
 		 * 친한이웃 소통하기 시작 
 		 */
-        private void btnRefreshFriends_Click(object sender, EventArgs e)
-        {
-			DbUtil.getAllFriends(dgFriendsList);
-			FriendGridSettings();
-		}
+
 		//친한이웃 수집
         private void btnFriendsInit_Click(object sender, EventArgs e)
         {
@@ -804,7 +800,7 @@ namespace BLOG_COMM
 
 			//전체 데이터 삭제
 			DbUtil.allDeleteFriends();
-			DbUtil.getAllFriends(dgFriendsList);
+			DbUtil.searchFriends(dgFriendsList);
 			FriendGridSettings();
 			int startPage = int.Parse(txtStartPage.Text);
 			int endPage = int.Parse(txtEndPage.Text);
@@ -849,7 +845,7 @@ namespace BLOG_COMM
 
 
 
-				DbUtil.getAllFriends(dgFriendsList);//화면표시
+				DbUtil.searchFriends(dgFriendsList);//화면표시
 
 				//페이지이동
 				int intNextPage = index + 1;
