@@ -1,12 +1,2 @@
  sj_con72/ sj4864137
  
- 
- CREATE TABLE [dbo].[Friends] (
-    [Id]         VARCHAR (50)  NOT NULL,
-    [nickname]   VARCHAR (50)  NOT NULL,
-    [blogurl]    VARCHAR (MAX) NULL,
-    [add_date]   DATE          NULL,
-    [gubun_type] VARCHAR (10)  NULL,
-    [reg_dtm]    DATETIME      DEFAULT (getdate()) NULL,
-    PRIMARY KEY CLUSTERED ([Id] ASC)
-);

@@ -22,7 +22,9 @@ namespace BLOG_COMM
         {
 
 			Common cmmLogin = new Common();
+			//Phantom cmmLogin = new Phantom();
 			var  result=cmmLogin.NaverLogin(txtId.Text, txtPwd.Text, checkBoxIsShow.Checked);
+
 			Application.DoEvents();
 			if (result) {
 				if (isSave.Checked)

@@ -47,6 +47,9 @@ namespace BLOG_COMM
 			_options.AddArgument("disable-dev-shm-usage");
 			_options.AddArgument("no-sandbox");
 			_options.AddArgument("ignore-certificate-errors");
+			_options.AddArgument("disable-infobars");
+			_options.AddArgument("--disable-extensions");
+
 		}
 
 		// 네이버 로그인 처리 

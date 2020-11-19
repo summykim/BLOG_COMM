@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -64,9 +65,9 @@ namespace BLOG_COMM
 
 		private void FormMain_Load(object sender, EventArgs e)
 		{
-
+			
 			newLogin();//로그인 호출 
-
+			//setStatusText("DB:"+DbUtil.ConnectionString);
 		}
 		//로그인 호출 
 		private  void newLogin()
@@ -243,7 +244,7 @@ namespace BLOG_COMM
 
 
 
-		// 내블로그 재 조회
+		// 내블로그  조회
 		private void btnBlogList_Click(object sender, EventArgs e)
 		{
 			allReply.Enabled = false;
@@ -253,6 +254,7 @@ namespace BLOG_COMM
 			PostUrl.Text = "";
 			txtPostTitle.Text = "";
 			getBlogList();
+			allReply.Enabled = true;
 		}
 
 		/********* 내 블로그 댓글 작성 시작 ******************************/
@@ -518,6 +520,12 @@ namespace BLOG_COMM
 				string naverid = nblogUrl.Split('/')[3];
 				string nickname = (string)dataGridView2.Rows[e.RowIndex].Cells[1].Value;//이름
 
+				DataTable dt = DbUtil.searchMyFriends(naverid);
+                if (dt.Rows.Count > 0)
+                {
+					MessageBox.Show(nickname + " 님은 이미 친한이웃입니다.");
+					return;
+                }
 	
 				string msg = nickname + " 님을 ";
 				var result = MessageBox.Show(msg + "친한이웃으로 등록 하시겠습니까?", "친한이웃등록", MessageBoxButtons.OKCancel);
@@ -933,6 +941,10 @@ namespace BLOG_COMM
 				btnFriendReply.Visible = false;
 				btnAddFriend.Visible = false;
 			}
+
+			DataTable dt=DbUtil.searchMyFriends(txtUpId.Text);
+			if(dt.Rows.Count>0) btnAddFriend.Visible = false;
+
 		}
 		//이웃추가
         private void btnAddFriend_Click(object sender, EventArgs e)
@@ -969,7 +981,7 @@ namespace BLOG_COMM
 		//친한친구 검색
         private void btnSearchMyFRIEND_Click(object sender, EventArgs e)
         {
-			DbUtil.searchMyFriends(dgMyFriendsList, txtSearchFname.Text,"", txtSearchFId.Text);
+			DbUtil.searchMyFriends(dgMyFriendsList, txtSearchFId.Text, txtSearchFname.Text,"");
 
 		}
 
@@ -1012,7 +1024,9 @@ namespace BLOG_COMM
 			int cnt=DbUtil.DeleteMyFriends(txtMyFId.Text);
 			string message = "정상 삭제되었습니다.";
 			if (cnt == 0) message = "삭제에 살패했습니다.";
-			else DbUtil.searchMyFriends(dgMyFriendsList, txtSearchFname.Text, "", txtSearchFId.Text);
+			else DbUtil.searchMyFriends(dgMyFriendsList, txtSearchFId.Text, txtSearchFname.Text, "");
+
+			txtMyFName.Text = "";txtMyFId.Text = "";
 
 			MessageBox.Show(message);
 
