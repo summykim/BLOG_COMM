@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -11,9 +12,9 @@ namespace BLOG_COMM
 {
      class DbUtil
     {
-        private  static SqlConnection conn = null;
+        private  static OleDbConnection conn = null;
 
-        private static SqlCommand cmd;
+        private static OleDbCommand cmd;
         private static SqlDataAdapter da;
         private static DataSet ds;
         private static DataTable dt;
@@ -36,14 +37,13 @@ namespace BLOG_COMM
         {
             if (conn == null)
             {
-                conn = new SqlConnection();
-                //conn.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + Application.StartupPath + @"\marbling.mdf;Integrated Security=True";
-                conn.ConnectionString = @"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\summy\source\repos\BLOG_COMM\BLOG_COMM\marbling.mdf; Integrated Security = True";
+                conn = new OleDbConnection();
+                conn.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + Application.StartupPath + @"\marbling.accdb;Persist Security Info=True";
             }
 
             if(conn.State==ConnectionState.Closed) conn.Open();
              
-             cmd = new SqlCommand();
+             cmd = new OleDbCommand();
              cmd.Connection = conn;
 
         }
@@ -72,39 +72,37 @@ namespace BLOG_COMM
         {
             DBinit();
 
-            String sql = "SELECT seq 번호 , Id as 아이디  ,nickname as 이름, blogtitle as 블로그명, blogurl as 블로그URL,add_date as 네이버등록일,gubun_type as 구분 FROM  Friends  WHERE 1=1";
+            String sql = "SELECT seq as 번호 , Id as 아이디  ,nickname as 이름, blogtitle as 블로그명, blogurl as 블로그URL,add_date as 네이버등록일,gubun_type as 구분 FROM  Friends  WHERE 1=1";
             if (searchName.Length > 0)
             {
-                sql += " AND  nickname like N'%"+ searchName + "%' ";
+                sql += " AND  nickname like '%"+ searchName + "%' ";
             }
             if (searchBlogTitle.Length > 0)
             {
-                sql += " AND  blogtitle like N'%" + searchBlogTitle + "%' ";
+                sql += " AND  blogtitle like '%" + searchBlogTitle + "%' ";
             }
             if (gubun.Length > 0 && !gubun.Equals("전체"))
             {
-                sql += " AND  gubun_type = N'" + gubun + "' ";
+                sql += " AND  gubun_type = '" + gubun + "' ";
             }
             if (naverid.Length > 0 )
             {
-                sql += " AND  id = N'" + naverid + "' ";
+                sql += " AND  id = '" + naverid + "' ";
             }
 
-             sql += " AND  owner = N'" + Common.currUser.Id + "' ";
+             sql += " AND  owner = '" + Common.currUser.Id + "' ";
 
             sql += " order by seq asc ";
             Console.WriteLine(sql);
             cmd.CommandText = sql;
 
 
-
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
             dgFriendsList.DataSource = dt.DefaultView;
 
-
-           
+          
 
         }
 
@@ -150,7 +148,7 @@ namespace BLOG_COMM
   
                 cmd.CommandType = CommandType.Text;
                 String sql = " DELETE  FROM  Friends   ";
-                sql += " WHERE  owner = N'" + Common.currUser.Id + "' ";
+                sql += " WHERE  owner = '" + Common.currUser.Id + "' ";
             cmd.CommandText = sql;
 
                 try
@@ -182,19 +180,19 @@ namespace BLOG_COMM
             String sql = "SELECT  Id as 아이디  ,nickname as 이름, reg_dtm as 등록일,gubun_type as 구분 FROM  MyFriends  WHERE 1=1";
             if (searchName.Length > 0)
             {
-                sql += " AND  nickname like N'%" + searchName + "%' ";
+                sql += " AND  nickname like '%" + searchName + "%' ";
             }
 
             if (gubun.Length > 0 && !gubun.Equals("전체"))
             {
-                sql += " AND  gubun_type = N'" + gubun + "' ";
+                sql += " AND  gubun_type = '" + gubun + "' ";
             }
             if (naverid.Length > 0)
             {
-                sql += " AND  id = N'" + naverid + "' ";
+                sql += " AND  id = '" + naverid + "' ";
             }
 
-            sql += " AND  owner = N'" + Common.currUser.Id + "' ";
+            sql += " AND  owner = '" + Common.currUser.Id + "' ";
 
             sql += " order by reg_dtm desc ";
             Console.WriteLine(sql);
@@ -202,7 +200,7 @@ namespace BLOG_COMM
 
 
 
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
             DataTable dt = new DataTable();
             try
             {
@@ -228,18 +226,19 @@ namespace BLOG_COMM
 
 
             cmd.CommandType = CommandType.Text;
-            String sql = " INSERT  INTO MyFriends(Id,nickname,gubun_type) values( @friendId,@nickname,@gubun_type) ";
+            String sql = " INSERT  INTO MyFriends(Id,nickname,gubun_type,owner) values( @friendId,@nickname,@gubun_type,@owner) ";
             cmd.CommandText = sql;
             cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue("@friendId", friendId);
             cmd.Parameters.AddWithValue("@nickname", nickname);
             cmd.Parameters.AddWithValue("@gubun_type", gubun_type);
+            cmd.Parameters.AddWithValue("@owner", Common.currUser.Id);
             try
             {
                 int result = cmd.ExecuteNonQuery();
                 Console.WriteLine(result.ToString(), "insert conunt");
             }
-            catch (SqlException e)
+            catch (OleDbException e)
             {
                 Console.WriteLine(e.Message.ToString(), "Error Message");
             }
