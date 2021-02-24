@@ -49,9 +49,10 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtId);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(21, 21);
+            this.panel1.Location = new System.Drawing.Point(24, 26);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(305, 155);
+            this.panel1.Size = new System.Drawing.Size(348, 193);
             this.panel1.TabIndex = 1;
             // 
             // isSave
@@ -59,9 +60,10 @@
             this.isSave.AutoSize = true;
             this.isSave.Checked = true;
             this.isSave.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.isSave.Location = new System.Drawing.Point(23, 105);
+            this.isSave.Location = new System.Drawing.Point(26, 131);
+            this.isSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.isSave.Name = "isSave";
-            this.isSave.Size = new System.Drawing.Size(48, 16);
+            this.isSave.Size = new System.Drawing.Size(59, 19);
             this.isSave.TabIndex = 6;
             this.isSave.Text = "저장";
             this.isSave.UseVisualStyleBackColor = true;
@@ -71,21 +73,22 @@
             this.checkBoxIsShow.AutoSize = true;
             this.checkBoxIsShow.Checked = true;
             this.checkBoxIsShow.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxIsShow.Location = new System.Drawing.Point(24, 134);
+            this.checkBoxIsShow.Location = new System.Drawing.Point(26, 158);
+            this.checkBoxIsShow.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBoxIsShow.Name = "checkBoxIsShow";
-            this.checkBoxIsShow.Size = new System.Drawing.Size(96, 16);
+            this.checkBoxIsShow.Size = new System.Drawing.Size(119, 19);
             this.checkBoxIsShow.TabIndex = 5;
             this.checkBoxIsShow.Text = "브라우저표시";
             this.checkBoxIsShow.UseVisualStyleBackColor = true;
-            this.checkBoxIsShow.Visible = false;
             // 
             // buttonLogin
             // 
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonLogin.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.buttonLogin.Location = new System.Drawing.Point(77, 101);
+            this.buttonLogin.Location = new System.Drawing.Point(88, 126);
+            this.buttonLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(168, 20);
+            this.buttonLogin.Size = new System.Drawing.Size(192, 25);
             this.buttonLogin.TabIndex = 4;
             this.buttonLogin.Text = "로그인";
             this.buttonLogin.UseVisualStyleBackColor = true;
@@ -93,44 +96,47 @@
             // 
             // txtPwd
             // 
-            this.txtPwd.Location = new System.Drawing.Point(77, 62);
+            this.txtPwd.Location = new System.Drawing.Point(88, 78);
+            this.txtPwd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.PasswordChar = '*';
-            this.txtPwd.Size = new System.Drawing.Size(168, 21);
+            this.txtPwd.Size = new System.Drawing.Size(191, 25);
             this.txtPwd.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 65);
+            this.label2.Location = new System.Drawing.Point(11, 81);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 12);
+            this.label2.Size = new System.Drawing.Size(77, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "패스워드 :";
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(77, 22);
+            this.txtId.Location = new System.Drawing.Point(88, 28);
+            this.txtId.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(168, 21);
+            this.txtId.Size = new System.Drawing.Size(191, 25);
             this.txtId.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 25);
+            this.label1.Location = new System.Drawing.Point(25, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 12);
+            this.label1.Size = new System.Drawing.Size(62, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "아이디 :";
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 198);
+            this.ClientSize = new System.Drawing.Size(408, 248);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Login";

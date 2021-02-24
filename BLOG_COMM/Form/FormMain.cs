@@ -21,7 +21,7 @@ namespace BLOG_COMM
 	
 		public partial class FormMain : Form
     {
-
+		private bool AutoBatchStop=true;
 
 		protected StatusBar mainStatusBar = new StatusBar();
 		protected StatusBarPanel statusPanel = new StatusBarPanel();
@@ -550,7 +550,7 @@ namespace BLOG_COMM
 			// 이웃블로그 댓글달기
 			
 				this.TopMost = false;
-
+            try { 
 
 
 				string allBlogListUrl = "https://blog.naver.com/PostList.nhn?blogId=" + nblogUrl.Split('/')[3] + "&categoryNo=0&from=postList";
@@ -639,6 +639,16 @@ namespace BLOG_COMM
 					// 답글을 입력했으면 등록처리
 					if (FriendReplyPop.ReplyContent.Length > 1)
 					{
+						if (FriendReplyPop.isEmpathy)
+						{
+
+							//공감댓글찾기 & 클릭
+							elFinded = Common.FindElement(By.XPath("//*[@id='area_sympathy" + blogId + "']/div/a/span[1]"));
+							if (elFinded != null)
+								elFinded.Click();
+
+						}
+
 						//댓글보기크릭
 						elFinded = Common.FindElement(By.XPath("//*[@id='Comi" + blogId + "']"));
 						elFinded.Click();
@@ -661,8 +671,6 @@ namespace BLOG_COMM
 							elFinded.Click();
 
 
-
-
 						}
 						else
 						{
@@ -671,12 +679,134 @@ namespace BLOG_COMM
 						}
 
 					}
+
 					this.TopMost = true;
 					return FriendReplyPop.ReplyContent;
 
 				}
-		}
 
+			}
+			catch (Exception ex)
+			{
+				return "";
+			}
+		}
+		//이웃블로그 자동 댓글달아주기 
+		private string AutoWriteReplyForMyFriend(string nblogUrl, string nickname, string ReplyContent,bool isEmpathy)
+		{
+			// 이웃블로그 자동 댓글달기
+
+			string allBlogListUrl = "https://blog.naver.com/PostList.nhn?blogId=" + nblogUrl.Split('/')[3] + "&categoryNo=0&from=postList";
+
+			IList<string> tabs = new List<string>(Common._driver.WindowHandles);
+			if (tabs.Count > 1)
+			{
+				Common._driver.SwitchTo().Window(tabs[1]).Close();
+				Common._driver.SwitchTo().Window(tabs[0]);
+			}
+
+			IJavaScriptExecutor js = (IJavaScriptExecutor)Common._driver;
+			js.ExecuteScript("window.open();");
+			tabs = new List<string>(Common._driver.WindowHandles);
+			Common._driver.SwitchTo().Window(tabs[1]);
+			Common._driver.Navigate().GoToUrl(allBlogListUrl);
+
+
+			var elFinded = Common.FindElement(By.XPath("//*[@id='toplistSpanBlind']"));
+			if (elFinded != null && elFinded.Text.Equals("목록열기"))
+			{
+				elFinded.Click();// 목록열기 클릭
+			}
+
+
+
+			//첫번째 최신글  찾기 	
+			elFinded = Common.FindElement(By.XPath("//*[@id='listTopForm']/table/tbody/tr[1]/td[1]/div/span/a"));
+			string blogurl = elFinded.GetAttribute("href");
+			string blogId = getBlogId(blogurl);
+			if (elFinded == null) // 글이 없을 경우
+			{
+				return "";
+			}
+			else
+			{
+				string posturl = elFinded.GetAttribute("href");
+				string[] arr = posturl.Split('&');
+				string[] postIds = arr[1].Split('=');
+				string postId = postIds[1];
+
+
+				elFinded.Click();// 최신글 클릭 이동
+
+
+
+				Thread.Sleep(500);
+
+
+				//글포스트 문 찾기 
+				elFinded = Common.FindElement(By.XPath("//*[@id='post-view" + postId + "']"));
+				var ArrText = elFinded.FindElements(By.ClassName("se-fs-"));
+				string Title = "";
+				string Contents = "";
+				for (int i = 0; i < ArrText.Count; i++)
+				{
+					if (i == 0)
+						Title = ArrText[i].Text;
+					else
+					{
+						Contents += ArrText[i].Text + System.Environment.NewLine;
+
+					}
+
+				}
+
+
+				// 답글을 입력했으면 등록처리
+				if (ReplyContent.Length > 1)
+				{
+					if (isEmpathy)
+					{
+
+						//공감댓글찾기 & 클릭
+						elFinded = Common.FindElement(By.XPath("//*[@id='area_sympathy" + blogId + "']/div/a/span[1]"));
+						if(elFinded!=null)
+							elFinded.Click();
+
+					}
+
+					//댓글보기크릭
+					elFinded = Common.FindElement(By.XPath("//*[@id='Comi" + blogId + "']"));
+					if (elFinded != null)
+						elFinded.Click();
+
+					//댓글입력창클릭
+					elFinded = Common.FindElement(By.XPath("//*[@id='naverComment_201_" + blogId + "']/div/div[5]/div[1]/form/fieldset/div/div/div[2]/div/label"));
+					if (elFinded != null)
+					{
+						elFinded.Click();
+
+
+						elFinded = Common.FindElement(By.XPath("//*[@id='naverComment_201_" + blogId + "__write_textarea']"));
+						if (elFinded != null)
+							// 댓글입력
+							elFinded.SendKeys(ReplyContent);
+
+
+						//등록버튼 클릭
+
+						elFinded = Common.FindElement(By.XPath("//*[@id='naverComment_201_" + blogId + "']/div/div[5]/div[1]/form/fieldset/div/div/div[6]/button"));
+						if (elFinded != null)
+							elFinded.Click();
+
+
+					}
+					
+
+				}
+				return ReplyContent;
+
+			}
+		}
 
 		private IWebElement FindElement(By selector)
 		{
@@ -775,101 +905,125 @@ namespace BLOG_COMM
 		//친한이웃 수집
         private void btnFriendsInit_Click(object sender, EventArgs e)
         {
-			if(txtStartPage.Text.Length==0 || !IsNumeric(txtStartPage.Text))
-            {
-				MessageBox.Show("시작 페이지 번호를 입력하세요.");
-				return;
-			}
-			else if (txtEndPage.Text.Length == 0 || !IsNumeric(txtEndPage.Text))
+
+			try
 			{
-				MessageBox.Show("마지막 페이지 번호를 입력하세요.");
-				return;
-			}
+				if (txtStartPage.Text.Length == 0 || !IsNumeric(txtStartPage.Text))
+				{
+					MessageBox.Show("시작 페이지 번호를 입력하세요.");
+					return;
+				}
+				else if (txtEndPage.Text.Length == 0 || !IsNumeric(txtEndPage.Text))
+				{
+					MessageBox.Show("마지막 페이지 번호를 입력하세요.");
+					return;
+				}
 
-			if(int.Parse(txtEndPage.Text)< int.Parse(txtStartPage.Text))
-            {
-				MessageBox.Show("시작 페이지 번호가  마지막 페이지 번호 보다 클수는 없습니다.");
-				return;
-			}
+				if (int.Parse(txtEndPage.Text) < int.Parse(txtStartPage.Text))
+				{
+					MessageBox.Show("시작 페이지 번호가  마지막 페이지 번호 보다 클수는 없습니다.");
+					return;
+				}
 
-			string start_msg = txtStartPage.Text + " 페이지 부터 " + txtEndPage.Text + " 페이지 까지 \n";
-			var result = MessageBox.Show(start_msg+ "네이버 이웃블로그 사용자 수집을 시작합니다. \n 전체 데이터를 삭제하고 시작합니다.", "네이버 이웃블로그수집", MessageBoxButtons.OKCancel);
-			if (result == DialogResult.Cancel)
-            {
-				return;
-            }
+				string start_msg = txtStartPage.Text + " 페이지 부터 " + txtEndPage.Text + " 페이지 까지 \n";
+
+				String DelStr = "";
+				if (chkDataAllDel.Checked)
+				{
+					DelStr = "전체 데이터를 삭제하고 시작하고 \n";
+				}
+				var result = MessageBox.Show(DelStr + start_msg + "네이버 이웃블로그 사용자 수집을 시작합니다.", "네이버 이웃블로그수집", MessageBoxButtons.OKCancel);
+				if (result == DialogResult.Cancel)
+				{
+					return;
+				}
 
 				var friendBlogerMgmtUrl = "https://admin.blog.naver.com/AdminMain.nhn?blogId=" + Common.currUser.Id + "&Redirect=BuddyMe";
-			Common._driver.Navigate().GoToUrl(friendBlogerMgmtUrl);
-			Common._driver.SwitchTo().Frame("papermain");// iframe 선택
+				Common._driver.Navigate().GoToUrl(friendBlogerMgmtUrl);
+				Common._driver.SwitchTo().Frame("papermain");// iframe 선택
 
 
-			//*[@id="wrap"]/div[2]/div[3]/div/a[2]
+				//*[@id="wrap"]/div[2]/div[3]/div/a[2]
 
-			//전체 데이터 삭제
-			DbUtil.allDeleteFriends();
-			DbUtil.searchFriends(dgFriendsList);
-			FriendGridSettings();
-			int startPage = int.Parse(txtStartPage.Text);
-			int endPage = int.Parse(txtEndPage.Text);
-			int progressCnt = 0;
-		  for(var index= startPage; index <= endPage; index++) {
-				// 헌재페이지 읽어오기 
-				var friendElements = Common._driver.FindElements(By.XPath("//*[@id='wrap']/div[2]/table/tbody/tr")); // row  추출
-				Console.WriteLine(" size  ==> " + friendElements.Count);
+				//전체 데이터 삭제
+				if (chkDataAllDel.Checked) DbUtil.allDeleteFriends();
 
-			
-				foreach (var friendInfo in friendElements)
+				DbUtil.searchFriends(dgFriendsList);
+				FriendGridSettings();
+				int startPage = int.Parse(txtStartPage.Text);
+				int endPage = int.Parse(txtEndPage.Text);
+				int progressCnt = 0;
+				for (var index = startPage; index <= endPage; index++)
 				{
-					var cols = friendInfo.FindElements(By.TagName("td"));
+					// 헌재페이지 읽어오기 
+					var friendElements = Common._driver.FindElements(By.XPath("//*[@id='wrap']/div[2]/table/tbody/tr")); // row  추출
+					Console.WriteLine(" size  ==> " + friendElements.Count);
 
 
-					string freindId = cols[0].FindElement(By.TagName("input")).GetAttribute("value");// 네이버아이디
+					foreach (var friendInfo in friendElements)
+					{
+						var cols = friendInfo.FindElements(By.TagName("td"));
 
 
-					string nickname = cols[1].FindElement(By.ClassName("nickname")).Text;
-					string friendBlogUrl = cols[1].FindElement(By.CssSelector("div > div > a")).GetAttribute("href");
-					string blogtile = cols[1].FindElement(By.CssSelector("div > div > a")).Text;
+						string freindId = cols[0].FindElement(By.TagName("input")).GetAttribute("value");// 네이버아이디
 
-					//구분 
-					string gubun_type1 = "", gubun_type2 = "";
-					var gubun1 = cols[2].FindElement(By.CssSelector("img")).GetAttribute("src");//서로이웃신청
-					if (gubun1.Contains("_on.gif")) gubun_type1 = "서로이웃신청";
-					else gubun_type1 = "서로이웃";
-					var gubun2 = cols[2].FindElement(By.CssSelector("img")).GetAttribute("src");//이웃추가
-					if (gubun2.Contains("_on.gif")) gubun_type2 = "이웃추가";
-					else gubun_type2 = "이웃";
-					string add_date = "20" + cols[3].Text.Replace('.', '-');
-					add_date = add_date.Substring(0, add_date.Length - 1);
-					Console.WriteLine(freindId + ":" + nickname + "|" + blogtile + "|" + gubun_type1 + "|" + gubun_type2 + "|" + add_date);
-					DbUtil.InsertFriend(freindId, nickname, blogtile,friendBlogUrl, add_date, gubun_type2);
 
-					progressCnt++;
-					string msg = "진행중 페이지:" + index.ToString();
-					progressText.Text = msg + "/ 진행건수:" + progressCnt.ToString();
-					
+						string nickname = cols[1].FindElement(By.ClassName("nickname")).Text;
+						string friendBlogUrl = cols[1].FindElement(By.CssSelector("div > div > a")).GetAttribute("href");
+						string blogtile = cols[1].FindElement(By.CssSelector("div > div > a")).Text;
+
+						//구분 
+						string gubun_type1 = "", gubun_type2 = "";
+						var gubun1 = cols[2].FindElement(By.CssSelector("img")).GetAttribute("src");//서로이웃신청
+						if (gubun1.Contains("_on.gif")) gubun_type1 = "서로이웃신청";
+						else gubun_type1 = "서로이웃";
+						var gubun2 = cols[2].FindElement(By.CssSelector("img")).GetAttribute("src");//이웃추가
+						if (gubun2.Contains("_on.gif")) gubun_type2 = "이웃추가";
+						else gubun_type2 = "이웃";
+						string add_date = "20" + cols[3].Text.Replace('.', '-');
+						add_date = add_date.Substring(0, add_date.Length - 1);
+						Console.WriteLine(freindId + ":" + nickname + "|" + blogtile + "|" + gubun_type1 + "|" + gubun_type2 + "|" + add_date);
+
+						DataTable dt = null;
+						if (!chkDataAllDel.Checked)
+							dt = DbUtil.existFriend(freindId);
+
+						if (dt == null || dt.Rows.Count == 0)
+							DbUtil.InsertFriend(freindId, nickname, blogtile, friendBlogUrl, add_date, gubun_type2);
+						else
+							DbUtil.UpdateFriend(freindId, nickname, blogtile, add_date, gubun_type2);
+
+						progressCnt++;
+						string msg = "진행중 페이지:" + index.ToString();
+						progressText.Text = msg + "/ 진행건수:" + progressCnt.ToString();
+
+
+					}
+
+
+
+					DbUtil.searchFriends(dgFriendsList);//화면표시
+
+					//페이지이동
+					int intNextPage = index + 1;
+					if (intNextPage > endPage)
+					{
+						break;
+					}
+					String nextpage = intNextPage.ToString();
+					Common._driver.ExecuteScript("goPage('" + nextpage + "')", "");//다음페이지 이동
 
 				}
 
 
+				progressText.Text = "수집 완료 건수:" + progressCnt.ToString();
 
-				DbUtil.searchFriends(dgFriendsList);//화면표시
-
-				//페이지이동
-				int intNextPage = index + 1;
-                if (intNextPage > endPage)
-                {
-					break;
-                }
-				String nextpage = intNextPage.ToString();
-				Common._driver.ExecuteScript("goPage('"+ nextpage + "')", "");//다음페이지 이동
-
-			}
-
-
-			progressText.Text = "수집 완료 건수:" + progressCnt.ToString();
-
-			MessageBox.Show("수집작업 완료 총건수:" + progressCnt.ToString());
+				MessageBox.Show("수집작업 완료 총건수:" + progressCnt.ToString());
+            }
+            catch (Exception ex)
+            {
+				Console.WriteLine(ex.Message.ToString());
+            }
 		}
 
 
@@ -882,6 +1036,11 @@ namespace BLOG_COMM
         private void btnFriendSearch_Click(object sender, EventArgs e)
         {
 			DbUtil.searchFriends(dgFriendsList, searchName.Text,searchBlogTitle.Text,cboGubun.Text,searchId.Text);
+            if (dgFriendsList.Rows.Count > 0)
+            {
+				txtStartNum.Text =Convert.ToString( dgFriendsList.Rows[0].Cells[0].Value);
+				txtEndNum.Text = Convert.ToString(dgFriendsList.Rows[dgFriendsList.Rows.Count - 1].Cells[0].Value);
+			}
 
 		}
 
@@ -963,7 +1122,7 @@ namespace BLOG_COMM
 		}
 
 
-		//댓글달기
+		//이웃블로그 수동 댓글달기
         private void btnFriendReply_Click(object sender, EventArgs e)
         {
 			// 이웃블로그 댓글달기
@@ -978,8 +1137,121 @@ namespace BLOG_COMM
 
 			
 		}
+
+		// 자동 배치 댓들달기 
+		private void btnBatchFriendReply_Click(object sender, EventArgs e)
+		{
+			int delaytime = 1000;
+
+			delaytime = int.Parse(cboDelayTime.Text) * 1000;
+
+            if (dgFriendsList.Rows.Count == 0)
+            {
+				MessageBox.Show("작업 대상이 없습니다.");
+				return;
+            }
+
+			String ReplyContent = "";
+			if (txtReplyInput.Text.Length > 0)
+			{
+				ReplyContent = txtReplyInput.Text;
+			}
+
+			else
+			{
+				MessageBox.Show("댓글 내용을 입력하세요.");
+				return;
+			}
+
+			int startNum = 0;
+			if(txtStartNum.Text.Length>0 && IsNumeric(txtStartNum.Text))
+            {
+				startNum = int.Parse(txtStartNum.Text);
+			}
+            else
+            {
+				MessageBox.Show("시작번호를 확인하세요.");
+				return;
+			}
+
+			int endNum = 0;
+			if (txtEndNum.Text.Length > 0 && IsNumeric(txtEndNum.Text))
+			{
+				endNum = int.Parse(txtEndNum.Text);
+			}
+			else
+			{
+				MessageBox.Show("끝 번호를 확인하세요.");
+				return;
+			}
+
+
+            if (startNum > endNum)
+            {
+				MessageBox.Show("시작번호가 끝번호 보다 크면 안됩니다.");
+				return;
+			}
+
+			string tmpReploycontent = "아래 내용과 같이 입력됩니다. 진행하시겠습니까?\n" +  "네이버님 " + " " + ReplyContent;
+			DialogResult result = MessageBox.Show(tmpReploycontent, "댓글내용", MessageBoxButtons.OKCancel);
+			if (result == DialogResult.Cancel) return;
+
+			btnBatchFriendReply.Visible = false;
+			btnBatchFriendReplyStop.Visible = true;
+			AutoBatchStop = false;
+
+
+
+			// 대상 리스트 loop
+			for ( int i=0; i< dgFriendsList.Rows.Count; i++
+)
+            {
+				int  curNum = Convert.ToInt32( dgFriendsList.Rows[i].Cells[0].Value);
+
+              if(curNum>=startNum &&  curNum <= endNum)
+                {
+
+					string userId = (string)dgFriendsList.Rows[i].Cells[1].Value;
+					string nblogUrl = Common.naver_blog_url + "/" + userId;//url
+					string nickname = (string)dgFriendsList.Rows[i].Cells[2].Value;
+
+					//답글내용 생성 : nickname 님   prefix 
+					tmpReploycontent = nickname + "님 " + " " + ReplyContent;
+
+					try
+					{
+
+						AutoWriteReplyForMyFriend(nblogUrl, nickname, tmpReploycontent, chkEmpathy.Checked);
+					}catch(Exception ex)
+                    {
+						Console.WriteLine(ex.Message.ToString());
+						MessageBox.Show(nickname+ "님 건은 정상적인 처리가 불가능합니다.");
+
+                    }
+
+
+					Application.DoEvents();
+
+					if (AutoBatchStop)
+					{
+						MessageBox.Show("사용자의 요청으로 중지됩니다.");
+						break;//사용자에 의해 중지 
+					}
+
+				
+
+					Thread.Sleep(delaytime);
+				}
+
+				if (curNum > endNum) break;// 작업 종료
+
+			}
+			btnBatchFriendReply.Visible = true;
+			btnBatchFriendReplyStop.Visible = false ;
+		}
+
 		//친한친구 검색
-        private void btnSearchMyFRIEND_Click(object sender, EventArgs e)
+		private void btnSearchMyFRIEND_Click(object sender, EventArgs e)
         {
 			DbUtil.searchMyFriends(dgMyFriendsList, txtSearchFId.Text, txtSearchFname.Text,"");
 
@@ -1050,6 +1322,27 @@ namespace BLOG_COMM
 				btnReplyMyFriend.Visible = false;
 			}
 		}
+
+		// 배치 자동 댓글 작업 중지 
+        private void btnBatchFriendReplyStop_Click(object sender, EventArgs e)
+        {
+			DialogResult result= MessageBox.Show("현재 진행중인 자동 댓글 작업을 중지 하시겠습니까?", "자동 댓글 중지 ", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+				AutoBatchStop = true;
+			}
+			 
+        }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 
 

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonLogin = new System.Windows.Forms.Button();
@@ -73,6 +73,21 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgMyFriendsList = new System.Windows.Forms.DataGridView();
             this.tabFriends = new System.Windows.Forms.TabPage();
+            this.tab2 = new System.Windows.Forms.TabControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.cboDelayTime = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtReplyInput = new System.Windows.Forms.TextBox();
+            this.btnBatchFriendReplyStop = new System.Windows.Forms.Button();
+            this.btnBatchFriendReply = new System.Windows.Forms.Button();
+            this.label22 = new System.Windows.Forms.Label();
+            this.chkEmpathy = new System.Windows.Forms.CheckBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtEndNum = new System.Windows.Forms.TextBox();
+            this.txtStartNum = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnFriendReply = new System.Windows.Forms.Button();
             this.txtUpName = new System.Windows.Forms.TextBox();
@@ -94,6 +109,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btnFriendSearch = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.chkDataAllDel = new System.Windows.Forms.CheckBox();
             this.progressText = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtEndPage = new System.Windows.Forms.TextBox();
@@ -121,6 +137,10 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgMyFriendsList)).BeginInit();
             this.tabFriends.SuspendLayout();
+            this.tab2.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -172,7 +192,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 62);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1098, 616);
+            this.tabControl1.Size = new System.Drawing.Size(1098, 689);
             this.tabControl1.TabIndex = 2;
             this.tabControl1.TabIndexChanged += new System.EventHandler(this.TabIndexchanged);
             // 
@@ -182,8 +202,8 @@
             this.tabBlogList.Controls.Add(this.dgvBlog);
             this.tabBlogList.Location = new System.Drawing.Point(4, 22);
             this.tabBlogList.Name = "tabBlogList";
-            this.tabBlogList.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBlogList.Size = new System.Drawing.Size(1090, 590);
+            this.tabBlogList.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabBlogList.Size = new System.Drawing.Size(1090, 663);
             this.tabBlogList.TabIndex = 1;
             this.tabBlogList.Text = "내블로그 목록";
             this.tabBlogList.UseVisualStyleBackColor = true;
@@ -234,6 +254,7 @@
             this.dgvBlog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBlog.Location = new System.Drawing.Point(6, 58);
             this.dgvBlog.Name = "dgvBlog";
+            this.dgvBlog.RowHeadersWidth = 51;
             this.dgvBlog.RowTemplate.Height = 23;
             this.dgvBlog.Size = new System.Drawing.Size(1078, 526);
             this.dgvBlog.TabIndex = 3;
@@ -245,8 +266,8 @@
             this.tabReply.Controls.Add(this.panel2);
             this.tabReply.Location = new System.Drawing.Point(4, 22);
             this.tabReply.Name = "tabReply";
-            this.tabReply.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReply.Size = new System.Drawing.Size(1090, 590);
+            this.tabReply.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabReply.Size = new System.Drawing.Size(1090, 663);
             this.tabReply.TabIndex = 0;
             this.tabReply.Text = "내블로그 답글달기";
             this.tabReply.UseVisualStyleBackColor = true;
@@ -268,23 +289,25 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView1.Location = new System.Drawing.Point(3, 17);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(1075, 465);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // panel2
             // 
@@ -352,8 +375,8 @@
             this.tabFriend.Controls.Add(this.groupBox1);
             this.tabFriend.Location = new System.Drawing.Point(4, 22);
             this.tabFriend.Name = "tabFriend";
-            this.tabFriend.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFriend.Size = new System.Drawing.Size(1090, 590);
+            this.tabFriend.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabFriend.Size = new System.Drawing.Size(1090, 663);
             this.tabFriend.TabIndex = 2;
             this.tabFriend.Text = "이웃블로그 댓글달기";
             this.tabFriend.UseVisualStyleBackColor = true;
@@ -375,23 +398,25 @@
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dataGridView2.Location = new System.Drawing.Point(3, 17);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.Size = new System.Drawing.Size(601, 539);
             this.dataGridView2.TabIndex = 4;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // tabMyFriends
             // 
@@ -400,7 +425,7 @@
             this.tabMyFriends.Controls.Add(this.groupBox4);
             this.tabMyFriends.Location = new System.Drawing.Point(4, 22);
             this.tabMyFriends.Name = "tabMyFriends";
-            this.tabMyFriends.Size = new System.Drawing.Size(1090, 590);
+            this.tabMyFriends.Size = new System.Drawing.Size(1090, 663);
             this.tabMyFriends.TabIndex = 4;
             this.tabMyFriends.Text = "친한이웃";
             this.tabMyFriends.UseVisualStyleBackColor = true;
@@ -585,19 +610,20 @@
             this.dgMyFriendsList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgMyFriendsList.ColumnHeadersHeight = 20;
             this.dgMyFriendsList.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgMyFriendsList.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgMyFriendsList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgMyFriendsList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgMyFriendsList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgMyFriendsList.Location = new System.Drawing.Point(3, 17);
             this.dgMyFriendsList.MultiSelect = false;
             this.dgMyFriendsList.Name = "dgMyFriendsList";
+            this.dgMyFriendsList.RowHeadersWidth = 51;
             this.dgMyFriendsList.RowTemplate.Height = 23;
             this.dgMyFriendsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgMyFriendsList.Size = new System.Drawing.Size(1072, 411);
@@ -606,17 +632,194 @@
             // 
             // tabFriends
             // 
-            this.tabFriends.Controls.Add(this.panel6);
+            this.tabFriends.Controls.Add(this.tab2);
             this.tabFriends.Controls.Add(this.panel5);
             this.tabFriends.Controls.Add(this.panel4);
             this.tabFriends.Controls.Add(this.groupBox3);
             this.tabFriends.Location = new System.Drawing.Point(4, 22);
             this.tabFriends.Name = "tabFriends";
-            this.tabFriends.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFriends.Size = new System.Drawing.Size(1090, 590);
+            this.tabFriends.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabFriends.Size = new System.Drawing.Size(1090, 663);
             this.tabFriends.TabIndex = 3;
             this.tabFriends.Text = "네이버이웃관리";
             this.tabFriends.UseVisualStyleBackColor = true;
+            // 
+            // tab2
+            // 
+            this.tab2.Controls.Add(this.tabPage2);
+            this.tab2.Controls.Add(this.tabPage1);
+            this.tab2.Location = new System.Drawing.Point(6, 497);
+            this.tab2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tab2.Name = "tab2";
+            this.tab2.SelectedIndex = 0;
+            this.tab2.Size = new System.Drawing.Size(1082, 162);
+            this.tab2.TabIndex = 9;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.panel9);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage2.Size = new System.Drawing.Size(1074, 136);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "자동";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.cboDelayTime);
+            this.panel9.Controls.Add(this.label24);
+            this.panel9.Controls.Add(this.txtReplyInput);
+            this.panel9.Controls.Add(this.btnBatchFriendReplyStop);
+            this.panel9.Controls.Add(this.btnBatchFriendReply);
+            this.panel9.Controls.Add(this.label22);
+            this.panel9.Controls.Add(this.chkEmpathy);
+            this.panel9.Controls.Add(this.label19);
+            this.panel9.Controls.Add(this.txtEndNum);
+            this.panel9.Controls.Add(this.txtStartNum);
+            this.panel9.Controls.Add(this.label23);
+            this.panel9.Location = new System.Drawing.Point(5, 5);
+            this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1065, 129);
+            this.panel9.TabIndex = 0;
+            // 
+            // cboDelayTime
+            // 
+            this.cboDelayTime.FormattingEnabled = true;
+            this.cboDelayTime.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "9",
+            "10"});
+            this.cboDelayTime.Location = new System.Drawing.Point(118, 99);
+            this.cboDelayTime.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cboDelayTime.Name = "cboDelayTime";
+            this.cboDelayTime.Size = new System.Drawing.Size(60, 20);
+            this.cboDelayTime.TabIndex = 26;
+            this.cboDelayTime.Text = "3";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(234, 17);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(53, 12);
+            this.label24.TabIndex = 25;
+            this.label24.Text = "댓글입력";
+            // 
+            // txtReplyInput
+            // 
+            this.txtReplyInput.Location = new System.Drawing.Point(298, 14);
+            this.txtReplyInput.Multiline = true;
+            this.txtReplyInput.Name = "txtReplyInput";
+            this.txtReplyInput.Size = new System.Drawing.Size(553, 101);
+            this.txtReplyInput.TabIndex = 24;
+            // 
+            // btnBatchFriendReplyStop
+            // 
+            this.btnBatchFriendReplyStop.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBatchFriendReplyStop.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnBatchFriendReplyStop.Location = new System.Drawing.Point(875, 75);
+            this.btnBatchFriendReplyStop.Name = "btnBatchFriendReplyStop";
+            this.btnBatchFriendReplyStop.Size = new System.Drawing.Size(146, 20);
+            this.btnBatchFriendReplyStop.TabIndex = 23;
+            this.btnBatchFriendReplyStop.Text = "자동 댓글 달기 중지";
+            this.btnBatchFriendReplyStop.UseVisualStyleBackColor = true;
+            this.btnBatchFriendReplyStop.Click += new System.EventHandler(this.btnBatchFriendReplyStop_Click);
+            // 
+            // btnBatchFriendReply
+            // 
+            this.btnBatchFriendReply.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBatchFriendReply.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.btnBatchFriendReply.Location = new System.Drawing.Point(875, 30);
+            this.btnBatchFriendReply.Name = "btnBatchFriendReply";
+            this.btnBatchFriendReply.Size = new System.Drawing.Size(146, 20);
+            this.btnBatchFriendReply.TabIndex = 22;
+            this.btnBatchFriendReply.Text = "자동 댓글 달기 시작";
+            this.btnBatchFriendReply.UseVisualStyleBackColor = true;
+            this.btnBatchFriendReply.Click += new System.EventHandler(this.btnBatchFriendReply_Click);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label22.Location = new System.Drawing.Point(24, 102);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(87, 12);
+            this.label22.TabIndex = 20;
+            this.label22.Text = "댓글주기(초):";
+            // 
+            // chkEmpathy
+            // 
+            this.chkEmpathy.AutoSize = true;
+            this.chkEmpathy.Checked = true;
+            this.chkEmpathy.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkEmpathy.Location = new System.Drawing.Point(26, 58);
+            this.chkEmpathy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkEmpathy.Name = "chkEmpathy";
+            this.chkEmpathy.Size = new System.Drawing.Size(72, 16);
+            this.chkEmpathy.TabIndex = 19;
+            this.chkEmpathy.Text = "공감여부";
+            this.chkEmpathy.UseVisualStyleBackColor = true;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(130, 22);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(14, 12);
+            this.label19.TabIndex = 17;
+            this.label19.Text = "~";
+            // 
+            // txtEndNum
+            // 
+            this.txtEndNum.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtEndNum.Location = new System.Drawing.Point(150, 17);
+            this.txtEndNum.MaxLength = 4;
+            this.txtEndNum.Name = "txtEndNum";
+            this.txtEndNum.Size = new System.Drawing.Size(53, 21);
+            this.txtEndNum.TabIndex = 16;
+            this.txtEndNum.Text = "2";
+            // 
+            // txtStartNum
+            // 
+            this.txtStartNum.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.txtStartNum.Location = new System.Drawing.Point(66, 17);
+            this.txtStartNum.MaxLength = 4;
+            this.txtStartNum.Name = "txtStartNum";
+            this.txtStartNum.Size = new System.Drawing.Size(59, 21);
+            this.txtStartNum.TabIndex = 14;
+            this.txtStartNum.Text = "1";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label23.Location = new System.Drawing.Point(24, 22);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(36, 12);
+            this.label23.TabIndex = 13;
+            this.label23.Text = "범위:";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.panel6);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tabPage1.Size = new System.Drawing.Size(1074, 136);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "수동";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // panel6
             // 
@@ -630,16 +833,16 @@
             this.panel6.Controls.Add(this.txtUpId);
             this.panel6.Controls.Add(this.label12);
             this.panel6.Controls.Add(this.btnAddFriend);
-            this.panel6.Location = new System.Drawing.Point(12, 512);
+            this.panel6.Location = new System.Drawing.Point(4, 9);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1072, 72);
-            this.panel6.TabIndex = 8;
+            this.panel6.Size = new System.Drawing.Size(1072, 124);
+            this.panel6.TabIndex = 9;
             // 
             // btnFriendReply
             // 
             this.btnFriendReply.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnFriendReply.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnFriendReply.Location = new System.Drawing.Point(793, 13);
+            this.btnFriendReply.Location = new System.Drawing.Point(925, 19);
             this.btnFriendReply.Name = "btnFriendReply";
             this.btnFriendReply.Size = new System.Drawing.Size(122, 20);
             this.btnFriendReply.TabIndex = 19;
@@ -651,7 +854,7 @@
             // txtUpName
             // 
             this.txtUpName.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtUpName.Location = new System.Drawing.Point(246, 14);
+            this.txtUpName.Location = new System.Drawing.Point(286, 14);
             this.txtUpName.MaxLength = 100;
             this.txtUpName.Name = "txtUpName";
             this.txtUpName.Size = new System.Drawing.Size(105, 21);
@@ -661,7 +864,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label13.Location = new System.Drawing.Point(204, 19);
+            this.label13.Location = new System.Drawing.Point(244, 19);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(36, 12);
             this.label13.TabIndex = 17;
@@ -670,7 +873,7 @@
             // txtUpBlogTitle
             // 
             this.txtUpBlogTitle.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtUpBlogTitle.Location = new System.Drawing.Point(461, 13);
+            this.txtUpBlogTitle.Location = new System.Drawing.Point(72, 55);
             this.txtUpBlogTitle.MaxLength = 100;
             this.txtUpBlogTitle.Name = "txtUpBlogTitle";
             this.txtUpBlogTitle.Size = new System.Drawing.Size(319, 21);
@@ -680,7 +883,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.Location = new System.Drawing.Point(393, 18);
+            this.label9.Location = new System.Drawing.Point(4, 60);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(62, 12);
             this.label9.TabIndex = 15;
@@ -718,7 +921,7 @@
             // 
             this.btnAddFriend.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAddFriend.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.btnAddFriend.Location = new System.Drawing.Point(927, 14);
+            this.btnAddFriend.Location = new System.Drawing.Point(925, 60);
             this.btnAddFriend.Name = "btnAddFriend";
             this.btnAddFriend.Size = new System.Drawing.Size(122, 20);
             this.btnAddFriend.TabIndex = 5;
@@ -838,6 +1041,7 @@
             // panel4
             // 
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.chkDataAllDel);
             this.panel4.Controls.Add(this.progressText);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.txtEndPage);
@@ -849,6 +1053,17 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1072, 50);
             this.panel4.TabIndex = 6;
+            // 
+            // chkDataAllDel
+            // 
+            this.chkDataAllDel.AutoSize = true;
+            this.chkDataAllDel.Location = new System.Drawing.Point(834, 17);
+            this.chkDataAllDel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkDataAllDel.Name = "chkDataAllDel";
+            this.chkDataAllDel.Size = new System.Drawing.Size(84, 16);
+            this.chkDataAllDel.TabIndex = 20;
+            this.chkDataAllDel.Text = "초기화여부";
+            this.chkDataAllDel.UseVisualStyleBackColor = true;
             // 
             // progressText
             // 
@@ -862,7 +1077,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(769, 19);
+            this.label6.Location = new System.Drawing.Point(676, 19);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(14, 12);
             this.label6.TabIndex = 12;
@@ -871,7 +1086,7 @@
             // txtEndPage
             // 
             this.txtEndPage.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtEndPage.Location = new System.Drawing.Point(873, 14);
+            this.txtEndPage.Location = new System.Drawing.Point(780, 14);
             this.txtEndPage.MaxLength = 3;
             this.txtEndPage.Name = "txtEndPage";
             this.txtEndPage.Size = new System.Drawing.Size(45, 21);
@@ -882,7 +1097,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label5.Location = new System.Drawing.Point(784, 18);
+            this.label5.Location = new System.Drawing.Point(690, 18);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 12);
             this.label5.TabIndex = 10;
@@ -891,7 +1106,7 @@
             // txtStartPage
             // 
             this.txtStartPage.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.txtStartPage.Location = new System.Drawing.Point(717, 15);
+            this.txtStartPage.Location = new System.Drawing.Point(623, 15);
             this.txtStartPage.MaxLength = 3;
             this.txtStartPage.Name = "txtStartPage";
             this.txtStartPage.Size = new System.Drawing.Size(49, 21);
@@ -902,7 +1117,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(639, 18);
+            this.label2.Location = new System.Drawing.Point(545, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 12);
             this.label2.TabIndex = 8;
@@ -939,19 +1154,20 @@
             this.dgFriendsList.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgFriendsList.ColumnHeadersHeight = 20;
             this.dgFriendsList.Cursor = System.Windows.Forms.Cursors.Default;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgFriendsList.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgFriendsList.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgFriendsList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgFriendsList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.dgFriendsList.Location = new System.Drawing.Point(3, 17);
             this.dgFriendsList.MultiSelect = false;
             this.dgFriendsList.Name = "dgFriendsList";
+            this.dgFriendsList.RowHeadersWidth = 51;
             this.dgFriendsList.RowTemplate.Height = 23;
             this.dgFriendsList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgFriendsList.Size = new System.Drawing.Size(1072, 336);
@@ -963,7 +1179,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1128, 712);
+            this.ClientSize = new System.Drawing.Size(1127, 750);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.Name = "FormMain";
@@ -993,6 +1209,11 @@
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgMyFriendsList)).EndInit();
             this.tabFriends.ResumeLayout(false);
+            this.tab2.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -1048,16 +1269,6 @@
         private System.Windows.Forms.Button btnFriendSearch;
         private System.Windows.Forms.TextBox searchBlogTitle;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TextBox txtUpBlogTitle;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtUpId;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button btnAddFriend;
-        private System.Windows.Forms.TextBox txtUpName;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button btnFriendReply;
         private System.Windows.Forms.TextBox searchId;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TabPage tabMyFriends;
@@ -1078,6 +1289,32 @@
         private System.Windows.Forms.TextBox txtMyFId;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button btnDelMyFriend;
+        private System.Windows.Forms.TabControl tab2;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnFriendReply;
+        private System.Windows.Forms.TextBox txtUpName;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtUpBlogTitle;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtUpId;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btnAddFriend;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox txtEndNum;
+        private System.Windows.Forms.TextBox txtStartNum;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.CheckBox chkEmpathy;
+        private System.Windows.Forms.CheckBox chkDataAllDel;
+        private System.Windows.Forms.Button btnBatchFriendReply;
+        private System.Windows.Forms.Button btnBatchFriendReplyStop;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtReplyInput;
+        private System.Windows.Forms.ComboBox cboDelayTime;
     }
 }
 

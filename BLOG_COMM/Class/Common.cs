@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using log4net;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
@@ -24,6 +25,7 @@ namespace BLOG_COMM
 
 		protected String blog_comment_id = "";
 		public static WebDriverWait wait;
+		public static readonly ILog log = LogManager.GetLogger(typeof(Common));
 
 		public Common(){
 
@@ -59,8 +61,6 @@ namespace BLOG_COMM
 			{
 				_options.AddArgument("headless"); // 창을 숨기는 옵션입니다.
 
-				_options.AddArgument("user-agent=Mozilla / 5.0(Windows NT 10.0; Win64; x64) AppleWebKit / 537.36(KHTML, like Gecko) Chrome / 86.0.4240.111 Safari / 537.36");
-
 				debugPrint(">>브라우저 숨기기 실행");
 			}
 
@@ -71,25 +71,16 @@ namespace BLOG_COMM
 				_driver.Navigate().GoToUrl(action_url); // 웹 사이트에 접속합니다.
 
 				_driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-				Clipboard.SetText(id);
 
-				var keysEventInput=_driver.FindElementByName("id");
-				keysEventInput.Click();
-				keysEventInput.SendKeys(OpenQA.Selenium.Keys.Control+ "v");
-				debugPrint("ID: "+keysEventInput.Text);
 
-				/*Actions action = new Actions(_driver);
-				IAction pressControl = action.KeyDown(OpenQA.Selenium.Keys.Control)
-				.SendKeys("v")
-				.KeyUp(OpenQA.Selenium.Keys.Control).Build();
-				pressControl.Perform(); */
+				_driver.ExecuteScript(@"document.getElementById('id').value='" +id +"'");
 
-				Clipboard.SetText(pw);
-				_driver.FindElementByName("pw").Click();
-				_driver.FindElementByName("pw").SendKeys(OpenQA.Selenium.Keys.Control + "v");
-				debugPrint("pw: " + keysEventInput.Text);
-				var form = _driver.FindElementByCssSelector("input.btn_global[type=submit]");
-				form.Submit();
+				_driver.ExecuteScript(@"document.getElementById('pw').value='" + pw + "'");
+
+				// 로그인 버튼 클릭
+				IWebElement form = FindElement(By.XPath(@"//*[@id='log.login']"));
+
+				form.Click();
 				
 				Thread.Sleep(500);
 
@@ -124,8 +115,9 @@ namespace BLOG_COMM
 
 
 			}
-			catch
+			catch(Exception ex)
 			{
+				log.Error(ex.Message);
 				return false;
 			}
 
@@ -161,12 +153,12 @@ namespace BLOG_COMM
 			catch (NoSuchElementException)
 			{
 				// Do something if the exception occurs, I am just logging
-				Console.WriteLine($"No such element: {selector.ToString()} could be found.");
+				log.Error($"No such element: {selector.ToString()} could be found.");
 			}
 			catch (Exception e)
 			{
 				// Throw any error we didn't account for
-				Console.WriteLine($"No such : {e.Message} could be found.");
+				log.Error($"No such : {e.Message} could be found.");
 			}
 
 			// return either the element or null
@@ -175,7 +167,7 @@ namespace BLOG_COMM
 
 		public static void debugPrint(string message)
         {
-			Console.WriteLine(message);
+			log.Debug(message);
         }
 	}
 }
