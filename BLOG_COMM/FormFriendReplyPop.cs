@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
 using OpenQA.Selenium;
-
+using Microsoft.Web.WebView2.Core;
 namespace BLOG_COMM
 {
     public partial class FormFriendReplyPop : KryptonForm
@@ -45,7 +40,6 @@ namespace BLOG_COMM
         {
             txtNickName.Text = NickName;
            // txtTitle.Text = Title;
-            txtContent.Text = Content;
             txtReplyInput.Text = ReplyContent;
             txtReplyInput.Focus();
         }
@@ -56,7 +50,9 @@ namespace BLOG_COMM
             Title = "";
             Content = "";
             ReplyContent = "";
-            this.Close();
+			webView2.Hide();
+			this.Close();
+			
         }
 
 
@@ -64,7 +60,7 @@ namespace BLOG_COMM
         {
             ReplyContent = txtReplyInput.Text;
             isEmpathy = chkEmpathy.Checked;
-
+			webView2.Hide();
 			worker_start("2");
 		
         }
@@ -105,7 +101,7 @@ namespace BLOG_COMM
 		}
 
 		//첫번째 글찾기
-		private void  FindFirstPosting()
+		private async void FindFirstPosting()
 		{
 			// 이웃블로그 댓글달기
 
@@ -129,45 +125,6 @@ namespace BLOG_COMM
 				tabs = new List<string>(Common._driver.WindowHandles);
 				Common._driver.SwitchTo().Window(tabs[1]);
 				Common._driver.Navigate().GoToUrl(allBlogListUrl);
-				// CSS 모으기
-				var elHeader = Common.FindElement(By.XPath("/html/head/style[1]"));
-				string strHeader = "";
-				if (js != null && elHeader != null)
-				{
-					String strStyle = (string)js.ExecuteScript("return arguments[0].innerHTML;", elHeader);
-					strHeader += strStyle;
-				}
-
-				elHeader = Common.FindElement(By.XPath("/html/head/style[2]"));
-				if (js != null && elHeader!=null)
-				{
-					String strStyle = (string)js.ExecuteScript("return arguments[0].innerHTML;", elHeader);
-					strHeader += strStyle;
-
-				}
-				elHeader = Common.FindElement(By.XPath("/html/head/style[3]"));
-				if (js != null && elHeader != null)
-				{
-					String strStyle = (string)js.ExecuteScript("return arguments[0].innerHTML;", elHeader);
-					strHeader += strStyle;
-
-				}
-				elHeader = Common.FindElement(By.XPath("#gnb_style"));
-				if (js != null && elHeader != null)
-				{
-					String strStyle = (string)js.ExecuteScript("return arguments[0].innerHTML;", elHeader);
-					strHeader += strStyle;
-				}
-
-				elHeader = Common.FindElement(By.XPath("#commentCustomCss"));
-				if (js != null && elHeader != null)
-				{
-					String strStyle = (string)js.ExecuteScript("return arguments[0].innerHTML;", elHeader);
-					strHeader += strStyle;
-				}
-
-
-				Common.log.Debug("Header string: " + strHeader);
 
 
 				BgWorker.ReportProgress(++pos, "");
@@ -217,18 +174,10 @@ namespace BLOG_COMM
 					{
 						Content = (string)js.ExecuteScript("return arguments[0].innerHTML;",elFinded);
 					}
-					//webview.DocumentText= Content;
-					webview.DocumentText= strHeader+ "" + Content;
-					/*var ArrText = elFinded.FindElements(By.ClassName("se-module se-module-text se-title-text"));
-					Title = "";
-					if (ArrText.Count > 0)
-					{
-						Title = ArrText[0].Text;//제목
-						Common.log.Debug("Title ==> " + Title);
-					}
-					*/
 
-					BgWorker.ReportProgress(10, "");
+
+
+					BgWorker.ReportProgress(10, curBlogtUrl);
 
 				}
 
@@ -322,7 +271,7 @@ namespace BLOG_COMM
 		}
 
 		// 백그라운드 작업 결과  화면 업데이트
-		private void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
+		private async void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
 		{
 
 			string status= (string)e.UserState;
@@ -332,8 +281,21 @@ namespace BLOG_COMM
             }
             else
             {
-				MessageBox.Show(status);
-				ReplyContent = "";
+                if (e.ProgressPercentage == 10)
+                {
+					if (webView2 != null )
+					{
+						webView2.Source = new Uri(status);
+
+					}
+                }
+                else
+                {
+
+					MessageBox.Show(status);
+					ReplyContent = "";
+				}
+
             }
 
 		}
@@ -364,5 +326,9 @@ namespace BLOG_COMM
 			return blogid;
 		}
 
-	}
+        private void webView2_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

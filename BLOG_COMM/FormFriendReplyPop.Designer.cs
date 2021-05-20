@@ -39,8 +39,7 @@
             this.kryptonGroupBox2 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.txtReplyInput = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonGroupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
-            this.webview = new System.Windows.Forms.WebBrowser();
-            this.txtContent = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.webView2 = new Microsoft.Web.WebView2.WinForms.WebView2();
             ((System.ComponentModel.ISupportInitialize)(this.pannel1)).BeginInit();
             this.pannel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox3)).BeginInit();
@@ -55,6 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).BeginInit();
             this.kryptonGroupBox1.Panel.SuspendLayout();
             this.kryptonGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webView2)).BeginInit();
             this.SuspendLayout();
             // 
             // pannel1
@@ -69,7 +69,7 @@
             this.pannel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pannel1.Location = new System.Drawing.Point(0, 0);
             this.pannel1.Name = "pannel1";
-            this.pannel1.Size = new System.Drawing.Size(1204, 594);
+            this.pannel1.Size = new System.Drawing.Size(1208, 673);
             this.pannel1.TabIndex = 1;
             // 
             // kryptonGroupBox3
@@ -82,7 +82,7 @@
             // 
             this.kryptonGroupBox3.Panel.Controls.Add(this.kryptonLabel1);
             this.kryptonGroupBox3.Panel.Controls.Add(this.txtNickName);
-            this.kryptonGroupBox3.Size = new System.Drawing.Size(1204, 46);
+            this.kryptonGroupBox3.Size = new System.Drawing.Size(1208, 46);
             this.kryptonGroupBox3.TabIndex = 16;
             this.kryptonGroupBox3.Values.Heading = "";
             // 
@@ -106,7 +106,7 @@
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(3, 573);
+            this.progressBar1.Location = new System.Drawing.Point(3, 652);
             this.progressBar1.Maximum = 10;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(1198, 18);
@@ -118,7 +118,7 @@
             // 
             this.chkEmpathy.Checked = true;
             this.chkEmpathy.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkEmpathy.Location = new System.Drawing.Point(444, 542);
+            this.chkEmpathy.Location = new System.Drawing.Point(444, 621);
             this.chkEmpathy.Name = "chkEmpathy";
             this.chkEmpathy.Size = new System.Drawing.Size(73, 20);
             this.chkEmpathy.TabIndex = 14;
@@ -126,7 +126,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(665, 537);
+            this.btnCancel.Location = new System.Drawing.Point(665, 616);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Blue;
             this.btnCancel.Size = new System.Drawing.Size(101, 30);
@@ -136,7 +136,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(537, 537);
+            this.btnOK.Location = new System.Drawing.Point(537, 616);
             this.btnOK.Name = "btnOK";
             this.btnOK.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Blue;
             this.btnOK.Size = new System.Drawing.Size(101, 30);
@@ -149,7 +149,7 @@
             this.kryptonGroupBox2.CaptionOverlap = 1D;
             this.kryptonGroupBox2.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalControl;
             this.kryptonGroupBox2.GroupBorderStyle = ComponentFactory.Krypton.Toolkit.PaletteBorderStyle.ControlClient;
-            this.kryptonGroupBox2.Location = new System.Drawing.Point(3, 394);
+            this.kryptonGroupBox2.Location = new System.Drawing.Point(3, 473);
             this.kryptonGroupBox2.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.kryptonGroupBox2.Name = "kryptonGroupBox2";
             this.kryptonGroupBox2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2007Blue;
@@ -184,38 +184,26 @@
             // 
             // kryptonGroupBox1.Panel
             // 
-            this.kryptonGroupBox1.Panel.Controls.Add(this.webview);
-            this.kryptonGroupBox1.Panel.Controls.Add(this.txtContent);
-            this.kryptonGroupBox1.Size = new System.Drawing.Size(1201, 333);
+            this.kryptonGroupBox1.Panel.Controls.Add(this.webView2);
+            this.kryptonGroupBox1.Size = new System.Drawing.Size(1201, 412);
             this.kryptonGroupBox1.TabIndex = 8;
             this.kryptonGroupBox1.Values.Heading = "글내용";
             // 
-            // webview
+            // webView2
             // 
-            this.webview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webview.Location = new System.Drawing.Point(0, 0);
-            this.webview.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webview.Name = "webview";
-            this.webview.Size = new System.Drawing.Size(1199, 312);
-            this.webview.TabIndex = 8;
-            // 
-            // txtContent
-            // 
-            this.txtContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtContent.Location = new System.Drawing.Point(0, 0);
-            this.txtContent.Multiline = true;
-            this.txtContent.Name = "txtContent";
-            this.txtContent.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleOrange;
-            this.txtContent.ReadOnly = true;
-            this.txtContent.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtContent.Size = new System.Drawing.Size(1199, 312);
-            this.txtContent.TabIndex = 7;
+            this.webView2.CreationProperties = null;
+            this.webView2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webView2.Location = new System.Drawing.Point(0, 0);
+            this.webView2.Name = "webView2";
+            this.webView2.Size = new System.Drawing.Size(1199, 391);
+            this.webView2.TabIndex = 0;
+            this.webView2.ZoomFactor = 1D;
             // 
             // FormFriendReplyPop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1204, 594);
+            this.ClientSize = new System.Drawing.Size(1208, 673);
             this.Controls.Add(this.pannel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -238,9 +226,9 @@
             this.kryptonGroupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1.Panel)).EndInit();
             this.kryptonGroupBox1.Panel.ResumeLayout(false);
-            this.kryptonGroupBox1.Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox1)).EndInit();
             this.kryptonGroupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.webView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -253,12 +241,11 @@
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox2;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtReplyInput;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox1;
-        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtContent;
         private ComponentFactory.Krypton.Toolkit.KryptonCheckBox chkEmpathy;
         private System.Windows.Forms.ProgressBar progressBar1;
         private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox3;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNickName;
-        private System.Windows.Forms.WebBrowser webview;
+        private Microsoft.Web.WebView2.WinForms.WebView2 webView2;
     }
 }
