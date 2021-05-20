@@ -118,6 +118,7 @@ namespace BLOG_COMM
 			catch(Exception ex)
 			{
 				log.Error(ex.Message);
+				MessageBox.Show(ex.Message);
 				return false;
 			}
 

@@ -243,23 +243,50 @@ namespace BLOG_COMM
                 cmd.CommandType = CommandType.Text;
                 String sql = " DELETE  FROM  Friends   ";
                 sql += " WHERE  owner = '" + Common.currUser.Id + "' ";
-            cmd.CommandText = sql;
+                cmd.CommandText = sql;
 
-                try
-                {
+            try
+            {
                 int result = cmd.ExecuteNonQuery();
                 Common.log.Debug(result.ToString() + "delete  conunt");
+
+                initFriendsTable();
             }
-                catch (SqlException e)
-                {
+            catch (SqlException e)
+            {
                     Common.log.Debug(e.Message.ToString() + "Error Message");
-                }
+            }
             finally
             {
                 conn.Close();
             }
 
         }
+        public static void initFriendsTable()
+        {
+            DBinit();
+
+
+            cmd.CommandType = CommandType.Text;
+            String sql = " ALTER TABLE Friends ALTER COLUMN seq COUNTER(1,1)   ";
+            cmd.CommandText = sql;
+
+            try
+            {
+                int result = cmd.ExecuteNonQuery();
+
+            }
+            catch (SqlException e)
+            {
+                Common.log.Debug(e.Message.ToString() + "Error Message");
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+        
 
         // 네이버친구  end  
 
