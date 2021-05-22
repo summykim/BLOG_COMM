@@ -22,9 +22,30 @@ namespace BLOG_COMM
         public List<Users> GetAll() => repo.GetAll<Users>();
         public List<Users> GetUserWhereNaverId(string NaverId)
         {
- 
-            Query query = repo.fireStoreDb.Collection(collectionName).WhereEqualTo(nameof(Users.naverId), NaverId);
+             Query query = repo.fireStoreDb.Collection(collectionName).WhereEqualTo(nameof(Users.naverId), NaverId);
             return repo.QueryRecords<Users>(query);
         }
+        public List<Users> GetUserWhere(string NaverId,string UserName)
+        {
+            Query query = null ;
+            if (NaverId.Length > 0 && UserName.Length>0)
+            {
+                query = repo.fireStoreDb.Collection(collectionName).WhereEqualTo(nameof(Users.naverId), NaverId).WhereEqualTo(nameof(Users.user_name), UserName);
+            }else if (NaverId.Length > 0 && UserName.Length == 0)
+            {
+                query = repo.fireStoreDb.Collection(collectionName).WhereEqualTo(nameof(Users.naverId), NaverId);
+            }
+            else if (NaverId.Length == 0 && UserName.Length > 0)
+            {
+                query = repo.fireStoreDb.Collection(collectionName).WhereEqualTo(nameof(Users.user_name), UserName);
+            }
+            else
+            {
+                query = repo.fireStoreDb.Collection(collectionName);
+            }
+
+              return repo.QueryRecords<Users>(query);
+        }
+
     }
 }

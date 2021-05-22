@@ -160,9 +160,46 @@
             this.cboResultCode = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.AutoWorkListSearch = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.AutoReplyWorkGrid = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.tabAdmin = new System.Windows.Forms.TabPage();
+            this.kryptonGroupBox23 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.kryptonLabel35 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.cboUserGroup = new Krypton.Toolkit.KryptonComboBox();
+            this.kryptonLabel34 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.cboUse_YN = new Krypton.Toolkit.KryptonComboBox();
+            this.cboUseYn = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.txtNaverId = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel33 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.txtUserDesc = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.btnUserReg = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kryptonLabel31 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.txtUserName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel32 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.txtUserId = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonGroupBox22 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.btnUserSearch = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kryptonLabel28 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.txtSearchUserName = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel30 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.txtSearchNaverId = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonGroupBox20 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.UsersGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.kryptonGroupBox21 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.kryptonButton2 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kryptonLabel23 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonTextBox1 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.kryptonLabel24 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonTextBox2 = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.권한관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.사용자관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnUserUpd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.key = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.naverId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_group = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updatebtn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnUserDelete = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.tabFriends.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3.Panel1)).BeginInit();
@@ -289,6 +326,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboAutoWorkGrp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboResultCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AutoReplyWorkGrid)).BeginInit();
+            this.tabAdmin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox23)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox23.Panel)).BeginInit();
+            this.kryptonGroupBox23.Panel.SuspendLayout();
+            this.kryptonGroupBox23.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboUserGroup)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboUse_YN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox22)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox22.Panel)).BeginInit();
+            this.kryptonGroupBox22.Panel.SuspendLayout();
+            this.kryptonGroupBox22.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox20)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox20.Panel)).BeginInit();
+            this.kryptonGroupBox20.Panel.SuspendLayout();
+            this.kryptonGroupBox20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox21)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox21.Panel)).BeginInit();
+            this.kryptonGroupBox21.Panel.SuspendLayout();
+            this.kryptonGroupBox21.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1148,7 +1205,7 @@
             this.kryptonSplitContainer1.Panel2.Controls.Add(this.kryptonGroupBox14);
             this.kryptonSplitContainer1.Panel2.Controls.Add(this.kryptonGroupBox5);
             this.kryptonSplitContainer1.Size = new System.Drawing.Size(1569, 836);
-            this.kryptonSplitContainer1.SplitterDistance = 596;
+            this.kryptonSplitContainer1.SplitterDistance = 598;
             this.kryptonSplitContainer1.SplitterWidth = 10;
             this.kryptonSplitContainer1.TabIndex = 0;
             // 
@@ -1164,7 +1221,7 @@
             // 
             this.kryptonGroupBox2.Panel.Controls.Add(this.dgvBlog);
             this.kryptonGroupBox2.Panel.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.kryptonGroupBox2.Size = new System.Drawing.Size(596, 836);
+            this.kryptonGroupBox2.Size = new System.Drawing.Size(598, 836);
             this.kryptonGroupBox2.TabIndex = 0;
             this.kryptonGroupBox2.Values.Heading = "내블로그 목록";
             // 
@@ -1191,7 +1248,7 @@
             this.dgvBlog.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Black;
             this.dgvBlog.RowTemplate.Height = 23;
             this.dgvBlog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvBlog.Size = new System.Drawing.Size(592, 814);
+            this.dgvBlog.Size = new System.Drawing.Size(594, 814);
             this.dgvBlog.TabIndex = 0;
             this.dgvBlog.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvBlog_CellMouseDoubleClick);
             // 
@@ -1234,7 +1291,7 @@
             // kryptonGroupBox14.Panel
             // 
             this.kryptonGroupBox14.Panel.Controls.Add(this.tabControl2);
-            this.kryptonGroupBox14.Size = new System.Drawing.Size(963, 747);
+            this.kryptonGroupBox14.Size = new System.Drawing.Size(961, 747);
             this.kryptonGroupBox14.TabIndex = 2;
             this.kryptonGroupBox14.Values.Heading = "";
             // 
@@ -1246,7 +1303,7 @@
             this.tabControl2.Location = new System.Drawing.Point(0, 0);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(959, 741);
+            this.tabControl2.Size = new System.Drawing.Size(957, 741);
             this.tabControl2.TabIndex = 1;
             this.tabControl2.Click += new System.EventHandler(this.tabControl2_Click);
             // 
@@ -1256,7 +1313,7 @@
             this.tabReply.Location = new System.Drawing.Point(4, 23);
             this.tabReply.Name = "tabReply";
             this.tabReply.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReply.Size = new System.Drawing.Size(951, 714);
+            this.tabReply.Size = new System.Drawing.Size(949, 714);
             this.tabReply.TabIndex = 0;
             this.tabReply.Text = "답글대상목록";
             this.tabReply.UseVisualStyleBackColor = true;
@@ -1272,7 +1329,7 @@
             // kryptonGroupBox3.Panel
             // 
             this.kryptonGroupBox3.Panel.Controls.Add(this.dataGridView1);
-            this.kryptonGroupBox3.Size = new System.Drawing.Size(945, 708);
+            this.kryptonGroupBox3.Size = new System.Drawing.Size(943, 708);
             this.kryptonGroupBox3.TabIndex = 0;
             this.kryptonGroupBox3.Values.Heading = "답글대상목록";
             // 
@@ -1297,7 +1354,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Black;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(941, 704);
+            this.dataGridView1.Size = new System.Drawing.Size(939, 704);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -1347,7 +1404,7 @@
             this.tabFriend.Location = new System.Drawing.Point(4, 23);
             this.tabFriend.Name = "tabFriend";
             this.tabFriend.Padding = new System.Windows.Forms.Padding(3);
-            this.tabFriend.Size = new System.Drawing.Size(951, 714);
+            this.tabFriend.Size = new System.Drawing.Size(949, 714);
             this.tabFriend.TabIndex = 1;
             this.tabFriend.Text = "댓글대상목록";
             this.tabFriend.UseVisualStyleBackColor = true;
@@ -1363,7 +1420,7 @@
             // kryptonGroupBox4.Panel
             // 
             this.kryptonGroupBox4.Panel.Controls.Add(this.dataGridView2);
-            this.kryptonGroupBox4.Size = new System.Drawing.Size(945, 708);
+            this.kryptonGroupBox4.Size = new System.Drawing.Size(943, 708);
             this.kryptonGroupBox4.TabIndex = 0;
             this.kryptonGroupBox4.Values.Heading = "댓글대상목록";
             // 
@@ -1386,7 +1443,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Black;
             this.dataGridView2.RowTemplate.Height = 23;
-            this.dataGridView2.Size = new System.Drawing.Size(941, 704);
+            this.dataGridView2.Size = new System.Drawing.Size(939, 704);
             this.dataGridView2.TabIndex = 2;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
@@ -1426,7 +1483,7 @@
             this.kryptonGroupBox5.Panel.Controls.Add(this.txtPostTitle);
             this.kryptonGroupBox5.Panel.Controls.Add(this.kryptonLabel1);
             this.kryptonGroupBox5.Panel.Controls.Add(this.PostUrl);
-            this.kryptonGroupBox5.Size = new System.Drawing.Size(963, 89);
+            this.kryptonGroupBox5.Size = new System.Drawing.Size(961, 89);
             this.kryptonGroupBox5.TabIndex = 1;
             this.kryptonGroupBox5.Values.Heading = "선택한 블로그 정보";
             // 
@@ -1472,6 +1529,7 @@
             this.tabControl1.Controls.Add(this.tabMyFriends);
             this.tabControl1.Controls.Add(this.tabFriends);
             this.tabControl1.Controls.Add(this.tabBlogHome);
+            this.tabControl1.Controls.Add(this.tabAdmin);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Font = new System.Drawing.Font("굴림", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -1855,6 +1913,345 @@
             this.AutoReplyWorkGrid.Size = new System.Drawing.Size(1087, 535);
             this.AutoReplyWorkGrid.TabIndex = 0;
             // 
+            // tabAdmin
+            // 
+            this.tabAdmin.Controls.Add(this.kryptonGroupBox23);
+            this.tabAdmin.Controls.Add(this.kryptonGroupBox22);
+            this.tabAdmin.Controls.Add(this.kryptonGroupBox20);
+            this.tabAdmin.Location = new System.Drawing.Point(4, 23);
+            this.tabAdmin.Name = "tabAdmin";
+            this.tabAdmin.Padding = new System.Windows.Forms.Padding(3);
+            this.tabAdmin.Size = new System.Drawing.Size(1502, 729);
+            this.tabAdmin.TabIndex = 6;
+            this.tabAdmin.Text = "사용자관리";
+            this.tabAdmin.UseVisualStyleBackColor = true;
+            // 
+            // kryptonGroupBox23
+            // 
+            this.kryptonGroupBox23.CaptionOverlap = 1D;
+            this.kryptonGroupBox23.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel;
+            this.kryptonGroupBox23.Location = new System.Drawing.Point(7, 601);
+            this.kryptonGroupBox23.Name = "kryptonGroupBox23";
+            this.kryptonGroupBox23.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
+            // 
+            // kryptonGroupBox23.Panel
+            // 
+            this.kryptonGroupBox23.Panel.Controls.Add(this.btnUserDelete);
+            this.kryptonGroupBox23.Panel.Controls.Add(this.btnUserUpd);
+            this.kryptonGroupBox23.Panel.Controls.Add(this.kryptonLabel35);
+            this.kryptonGroupBox23.Panel.Controls.Add(this.cboUserGroup);
+            this.kryptonGroupBox23.Panel.Controls.Add(this.kryptonLabel34);
+            this.kryptonGroupBox23.Panel.Controls.Add(this.cboUse_YN);
+            this.kryptonGroupBox23.Panel.Controls.Add(this.cboUseYn);
+            this.kryptonGroupBox23.Panel.Controls.Add(this.txtNaverId);
+            this.kryptonGroupBox23.Panel.Controls.Add(this.kryptonLabel33);
+            this.kryptonGroupBox23.Panel.Controls.Add(this.txtUserDesc);
+            this.kryptonGroupBox23.Panel.Controls.Add(this.btnUserReg);
+            this.kryptonGroupBox23.Panel.Controls.Add(this.kryptonLabel31);
+            this.kryptonGroupBox23.Panel.Controls.Add(this.txtUserName);
+            this.kryptonGroupBox23.Panel.Controls.Add(this.kryptonLabel32);
+            this.kryptonGroupBox23.Panel.Controls.Add(this.txtUserId);
+            this.kryptonGroupBox23.Size = new System.Drawing.Size(793, 102);
+            this.kryptonGroupBox23.TabIndex = 9;
+            this.kryptonGroupBox23.Values.Heading = "변경";
+            // 
+            // kryptonLabel35
+            // 
+            this.kryptonLabel35.Location = new System.Drawing.Point(415, 45);
+            this.kryptonLabel35.Name = "kryptonLabel35";
+            this.kryptonLabel35.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.kryptonLabel35.Size = new System.Drawing.Size(75, 20);
+            this.kryptonLabel35.TabIndex = 16;
+            this.kryptonLabel35.Values.Text = "사용자구분:";
+            // 
+            // cboUserGroup
+            // 
+            this.cboUserGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cboUserGroup.DropDownWidth = 57;
+            this.cboUserGroup.IntegralHeight = false;
+            this.cboUserGroup.Items.AddRange(new object[] {
+            "user",
+            "admin"});
+            this.cboUserGroup.Location = new System.Drawing.Point(496, 44);
+            this.cboUserGroup.Name = "cboUserGroup";
+            this.cboUserGroup.Size = new System.Drawing.Size(57, 21);
+            this.cboUserGroup.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.cboUserGroup.TabIndex = 15;
+            this.cboUserGroup.Text = "user";
+            // 
+            // kryptonLabel34
+            // 
+            this.kryptonLabel34.Location = new System.Drawing.Point(249, 44);
+            this.kryptonLabel34.Name = "kryptonLabel34";
+            this.kryptonLabel34.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.kryptonLabel34.Size = new System.Drawing.Size(63, 20);
+            this.kryptonLabel34.TabIndex = 14;
+            this.kryptonLabel34.Values.Text = "사용여부:";
+            // 
+            // cboUse_YN
+            // 
+            this.cboUse_YN.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cboUse_YN.DropDownWidth = 57;
+            this.cboUse_YN.IntegralHeight = false;
+            this.cboUse_YN.Items.AddRange(new object[] {
+            "예",
+            "아니오"});
+            this.cboUse_YN.Location = new System.Drawing.Point(317, 43);
+            this.cboUse_YN.Name = "cboUse_YN";
+            this.cboUse_YN.Size = new System.Drawing.Size(57, 21);
+            this.cboUse_YN.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Near;
+            this.cboUse_YN.TabIndex = 13;
+            this.cboUse_YN.Text = "예";
+            // 
+            // cboUseYn
+            // 
+            this.cboUseYn.Location = new System.Drawing.Point(29, 43);
+            this.cboUseYn.Name = "cboUseYn";
+            this.cboUseYn.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.cboUseYn.Size = new System.Drawing.Size(87, 20);
+            this.cboUseYn.TabIndex = 12;
+            this.cboUseYn.Values.Text = "네이버아이디:";
+            // 
+            // txtNaverId
+            // 
+            this.txtNaverId.Location = new System.Drawing.Point(122, 40);
+            this.txtNaverId.Name = "txtNaverId";
+            this.txtNaverId.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.txtNaverId.Size = new System.Drawing.Size(103, 23);
+            this.txtNaverId.TabIndex = 11;
+            // 
+            // kryptonLabel33
+            // 
+            this.kryptonLabel33.Location = new System.Drawing.Point(358, 14);
+            this.kryptonLabel33.Name = "kryptonLabel33";
+            this.kryptonLabel33.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.kryptonLabel33.Size = new System.Drawing.Size(38, 20);
+            this.kryptonLabel33.TabIndex = 10;
+            this.kryptonLabel33.Values.Text = "설명:";
+            // 
+            // txtUserDesc
+            // 
+            this.txtUserDesc.Location = new System.Drawing.Point(401, 11);
+            this.txtUserDesc.Name = "txtUserDesc";
+            this.txtUserDesc.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.txtUserDesc.Size = new System.Drawing.Size(210, 23);
+            this.txtUserDesc.TabIndex = 9;
+            // 
+            // btnUserReg
+            // 
+            this.btnUserReg.Location = new System.Drawing.Point(624, 10);
+            this.btnUserReg.Name = "btnUserReg";
+            this.btnUserReg.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnUserReg.Size = new System.Drawing.Size(162, 30);
+            this.btnUserReg.TabIndex = 8;
+            this.btnUserReg.Values.Text = "신규등록";
+            this.btnUserReg.Click += new System.EventHandler(this.btnUserReg_Click);
+            // 
+            // kryptonLabel31
+            // 
+            this.kryptonLabel31.Location = new System.Drawing.Point(188, 14);
+            this.kryptonLabel31.Name = "kryptonLabel31";
+            this.kryptonLabel31.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.kryptonLabel31.Size = new System.Drawing.Size(38, 20);
+            this.kryptonLabel31.TabIndex = 7;
+            this.kryptonLabel31.Values.Text = "이름:";
+            // 
+            // txtUserName
+            // 
+            this.txtUserName.Location = new System.Drawing.Point(231, 11);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.txtUserName.Size = new System.Drawing.Size(110, 23);
+            this.txtUserName.TabIndex = 6;
+            // 
+            // kryptonLabel32
+            // 
+            this.kryptonLabel32.Location = new System.Drawing.Point(12, 14);
+            this.kryptonLabel32.Name = "kryptonLabel32";
+            this.kryptonLabel32.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.kryptonLabel32.Size = new System.Drawing.Size(50, 20);
+            this.kryptonLabel32.TabIndex = 5;
+            this.kryptonLabel32.Values.Text = "유저키:";
+            // 
+            // txtUserId
+            // 
+            this.txtUserId.Location = new System.Drawing.Point(66, 11);
+            this.txtUserId.Name = "txtUserId";
+            this.txtUserId.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.txtUserId.ReadOnly = true;
+            this.txtUserId.Size = new System.Drawing.Size(103, 23);
+            this.txtUserId.TabIndex = 4;
+            // 
+            // kryptonGroupBox22
+            // 
+            this.kryptonGroupBox22.CaptionOverlap = 1D;
+            this.kryptonGroupBox22.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel;
+            this.kryptonGroupBox22.Location = new System.Drawing.Point(6, 3);
+            this.kryptonGroupBox22.Name = "kryptonGroupBox22";
+            this.kryptonGroupBox22.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
+            // 
+            // kryptonGroupBox22.Panel
+            // 
+            this.kryptonGroupBox22.Panel.Controls.Add(this.btnUserSearch);
+            this.kryptonGroupBox22.Panel.Controls.Add(this.kryptonLabel28);
+            this.kryptonGroupBox22.Panel.Controls.Add(this.txtSearchUserName);
+            this.kryptonGroupBox22.Panel.Controls.Add(this.kryptonLabel30);
+            this.kryptonGroupBox22.Panel.Controls.Add(this.txtSearchNaverId);
+            this.kryptonGroupBox22.Size = new System.Drawing.Size(793, 71);
+            this.kryptonGroupBox22.TabIndex = 8;
+            this.kryptonGroupBox22.Values.Heading = "검색조건";
+            // 
+            // btnUserSearch
+            // 
+            this.btnUserSearch.Location = new System.Drawing.Point(672, 7);
+            this.btnUserSearch.Name = "btnUserSearch";
+            this.btnUserSearch.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnUserSearch.Size = new System.Drawing.Size(108, 30);
+            this.btnUserSearch.TabIndex = 8;
+            this.btnUserSearch.Values.Text = "검색";
+            this.btnUserSearch.Click += new System.EventHandler(this.btnUserSearch_Click);
+            // 
+            // kryptonLabel28
+            // 
+            this.kryptonLabel28.Location = new System.Drawing.Point(367, 14);
+            this.kryptonLabel28.Name = "kryptonLabel28";
+            this.kryptonLabel28.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.kryptonLabel28.Size = new System.Drawing.Size(38, 20);
+            this.kryptonLabel28.TabIndex = 7;
+            this.kryptonLabel28.Values.Text = "이름:";
+            // 
+            // txtSearchUserName
+            // 
+            this.txtSearchUserName.Location = new System.Drawing.Point(410, 11);
+            this.txtSearchUserName.Name = "txtSearchUserName";
+            this.txtSearchUserName.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.txtSearchUserName.Size = new System.Drawing.Size(198, 23);
+            this.txtSearchUserName.TabIndex = 6;
+            // 
+            // kryptonLabel30
+            // 
+            this.kryptonLabel30.Location = new System.Drawing.Point(13, 14);
+            this.kryptonLabel30.Name = "kryptonLabel30";
+            this.kryptonLabel30.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.kryptonLabel30.Size = new System.Drawing.Size(91, 20);
+            this.kryptonLabel30.TabIndex = 5;
+            this.kryptonLabel30.Values.Text = "네이버 아이디:";
+            // 
+            // txtSearchNaverId
+            // 
+            this.txtSearchNaverId.Location = new System.Drawing.Point(123, 11);
+            this.txtSearchNaverId.Name = "txtSearchNaverId";
+            this.txtSearchNaverId.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.txtSearchNaverId.Size = new System.Drawing.Size(149, 23);
+            this.txtSearchNaverId.TabIndex = 4;
+            // 
+            // kryptonGroupBox20
+            // 
+            this.kryptonGroupBox20.CaptionOverlap = 1D;
+            this.kryptonGroupBox20.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.BoldControl;
+            this.kryptonGroupBox20.Location = new System.Drawing.Point(6, 80);
+            this.kryptonGroupBox20.Name = "kryptonGroupBox20";
+            // 
+            // kryptonGroupBox20.Panel
+            // 
+            this.kryptonGroupBox20.Panel.Controls.Add(this.UsersGridView);
+            this.kryptonGroupBox20.Panel.Controls.Add(this.kryptonGroupBox21);
+            this.kryptonGroupBox20.Panel.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.kryptonGroupBox20.Size = new System.Drawing.Size(794, 507);
+            this.kryptonGroupBox20.TabIndex = 3;
+            this.kryptonGroupBox20.Values.Heading = "마블링 사용자 목록";
+            // 
+            // UsersGridView
+            // 
+            this.UsersGridView.AllowUserToAddRows = false;
+            this.UsersGridView.AllowUserToDeleteRows = false;
+            this.UsersGridView.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.UsersGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.UsersGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.key,
+            this.user_name,
+            this.user_desc,
+            this.naverId,
+            this.user_group,
+            this.updatebtn});
+            this.UsersGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.UsersGridView.GridStyles.Style = ComponentFactory.Krypton.Toolkit.DataGridViewStyle.Custom1;
+            this.UsersGridView.GridStyles.StyleBackground = ComponentFactory.Krypton.Toolkit.PaletteBackStyle.GridBackgroundCustom1;
+            this.UsersGridView.GridStyles.StyleColumn = ComponentFactory.Krypton.Toolkit.GridStyle.Custom1;
+            this.UsersGridView.GridStyles.StyleDataCells = ComponentFactory.Krypton.Toolkit.GridStyle.Sheet;
+            this.UsersGridView.GridStyles.StyleRow = ComponentFactory.Krypton.Toolkit.GridStyle.Custom1;
+            this.UsersGridView.Location = new System.Drawing.Point(0, 0);
+            this.UsersGridView.MultiSelect = false;
+            this.UsersGridView.Name = "UsersGridView";
+            this.UsersGridView.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Black;
+            this.UsersGridView.RowTemplate.Height = 23;
+            this.UsersGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.UsersGridView.Size = new System.Drawing.Size(790, 485);
+            this.UsersGridView.TabIndex = 0;
+            this.UsersGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGridView_CellClick);
+            // 
+            // kryptonGroupBox21
+            // 
+            this.kryptonGroupBox21.CaptionOverlap = 1D;
+            this.kryptonGroupBox21.CaptionStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.NormalPanel;
+            this.kryptonGroupBox21.Location = new System.Drawing.Point(3, 501);
+            this.kryptonGroupBox21.Name = "kryptonGroupBox21";
+            this.kryptonGroupBox21.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.ProfessionalOffice2003;
+            // 
+            // kryptonGroupBox21.Panel
+            // 
+            this.kryptonGroupBox21.Panel.Controls.Add(this.kryptonButton2);
+            this.kryptonGroupBox21.Panel.Controls.Add(this.kryptonLabel23);
+            this.kryptonGroupBox21.Panel.Controls.Add(this.kryptonTextBox1);
+            this.kryptonGroupBox21.Panel.Controls.Add(this.kryptonLabel24);
+            this.kryptonGroupBox21.Panel.Controls.Add(this.kryptonTextBox2);
+            this.kryptonGroupBox21.Size = new System.Drawing.Size(790, 120);
+            this.kryptonGroupBox21.TabIndex = 5;
+            this.kryptonGroupBox21.Values.Heading = "사용자정보";
+            // 
+            // kryptonButton2
+            // 
+            this.kryptonButton2.Location = new System.Drawing.Point(637, 11);
+            this.kryptonButton2.Name = "kryptonButton2";
+            this.kryptonButton2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.kryptonButton2.Size = new System.Drawing.Size(108, 30);
+            this.kryptonButton2.TabIndex = 8;
+            this.kryptonButton2.Values.Text = "신규등록";
+            // 
+            // kryptonLabel23
+            // 
+            this.kryptonLabel23.Location = new System.Drawing.Point(367, 14);
+            this.kryptonLabel23.Name = "kryptonLabel23";
+            this.kryptonLabel23.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.kryptonLabel23.Size = new System.Drawing.Size(38, 20);
+            this.kryptonLabel23.TabIndex = 7;
+            this.kryptonLabel23.Values.Text = "이름:";
+            // 
+            // kryptonTextBox1
+            // 
+            this.kryptonTextBox1.Location = new System.Drawing.Point(410, 11);
+            this.kryptonTextBox1.Name = "kryptonTextBox1";
+            this.kryptonTextBox1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.kryptonTextBox1.Size = new System.Drawing.Size(198, 23);
+            this.kryptonTextBox1.TabIndex = 6;
+            // 
+            // kryptonLabel24
+            // 
+            this.kryptonLabel24.Location = new System.Drawing.Point(53, 14);
+            this.kryptonLabel24.Name = "kryptonLabel24";
+            this.kryptonLabel24.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.kryptonLabel24.Size = new System.Drawing.Size(25, 20);
+            this.kryptonLabel24.TabIndex = 5;
+            this.kryptonLabel24.Values.Text = "ID:";
+            // 
+            // kryptonTextBox2
+            // 
+            this.kryptonTextBox2.Location = new System.Drawing.Point(90, 11);
+            this.kryptonTextBox2.Name = "kryptonTextBox2";
+            this.kryptonTextBox2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.kryptonTextBox2.Size = new System.Drawing.Size(198, 23);
+            this.kryptonTextBox2.TabIndex = 4;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -1879,9 +2276,71 @@
             // 사용자관리ToolStripMenuItem
             // 
             this.사용자관리ToolStripMenuItem.Name = "사용자관리ToolStripMenuItem";
-            this.사용자관리ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.사용자관리ToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.사용자관리ToolStripMenuItem.Text = "사용자관리";
             this.사용자관리ToolStripMenuItem.Click += new System.EventHandler(this.사용자관리ToolStripMenuItem_Click);
+            // 
+            // btnUserUpd
+            // 
+            this.btnUserUpd.Location = new System.Drawing.Point(624, 44);
+            this.btnUserUpd.Name = "btnUserUpd";
+            this.btnUserUpd.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnUserUpd.Size = new System.Drawing.Size(69, 30);
+            this.btnUserUpd.TabIndex = 17;
+            this.btnUserUpd.Values.Text = "수정";
+            this.btnUserUpd.Click += new System.EventHandler(this.btnUserUpd_Click);
+            // 
+            // key
+            // 
+            this.key.HeaderText = "Id";
+            this.key.Name = "key";
+            this.key.ReadOnly = true;
+            // 
+            // user_name
+            // 
+            this.user_name.HeaderText = "사용자명";
+            this.user_name.Name = "user_name";
+            this.user_name.ReadOnly = true;
+            // 
+            // user_desc
+            // 
+            this.user_desc.HeaderText = "사용자설명";
+            this.user_desc.Name = "user_desc";
+            this.user_desc.ReadOnly = true;
+            this.user_desc.Width = 200;
+            // 
+            // naverId
+            // 
+            this.naverId.HeaderText = "네이버아이디";
+            this.naverId.Name = "naverId";
+            this.naverId.ReadOnly = true;
+            this.naverId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.naverId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // user_group
+            // 
+            this.user_group.HeaderText = "사용자구분";
+            this.user_group.Name = "user_group";
+            this.user_group.ReadOnly = true;
+            this.user_group.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.user_group.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // updatebtn
+            // 
+            this.updatebtn.HeaderText = "사용여부";
+            this.updatebtn.Name = "updatebtn";
+            this.updatebtn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.updatebtn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // btnUserDelete
+            // 
+            this.btnUserDelete.Location = new System.Drawing.Point(717, 44);
+            this.btnUserDelete.Name = "btnUserDelete";
+            this.btnUserDelete.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnUserDelete.Size = new System.Drawing.Size(69, 30);
+            this.btnUserDelete.TabIndex = 18;
+            this.btnUserDelete.Values.Text = "삭제";
+            this.btnUserDelete.Click += new System.EventHandler(this.btnUserDelete_Click);
             // 
             // FormMyBlog
             // 
@@ -2032,6 +2491,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboAutoWorkGrp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboResultCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AutoReplyWorkGrid)).EndInit();
+            this.tabAdmin.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox23.Panel)).EndInit();
+            this.kryptonGroupBox23.Panel.ResumeLayout(false);
+            this.kryptonGroupBox23.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox23)).EndInit();
+            this.kryptonGroupBox23.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cboUserGroup)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboUse_YN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox22.Panel)).EndInit();
+            this.kryptonGroupBox22.Panel.ResumeLayout(false);
+            this.kryptonGroupBox22.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox22)).EndInit();
+            this.kryptonGroupBox22.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox20.Panel)).EndInit();
+            this.kryptonGroupBox20.Panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox20)).EndInit();
+            this.kryptonGroupBox20.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.UsersGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox21.Panel)).EndInit();
+            this.kryptonGroupBox21.Panel.ResumeLayout(false);
+            this.kryptonGroupBox21.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox21)).EndInit();
+            this.kryptonGroupBox21.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -2175,5 +2657,42 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 권한관리ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 사용자관리ToolStripMenuItem;
+        private System.Windows.Forms.TabPage tabAdmin;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox20;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView UsersGridView;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox21;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton2;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel23;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel24;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox kryptonTextBox2;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox22;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnUserSearch;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel28;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtSearchUserName;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel30;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtSearchNaverId;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox kryptonGroupBox23;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel34;
+        private Krypton.Toolkit.KryptonComboBox cboUse_YN;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel cboUseYn;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNaverId;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel33;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtUserDesc;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnUserReg;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel31;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtUserName;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel32;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtUserId;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel35;
+        private Krypton.Toolkit.KryptonComboBox cboUserGroup;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnUserUpd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn key;
+        private System.Windows.Forms.DataGridViewTextBoxColumn user_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn user_desc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn naverId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn user_group;
+        private System.Windows.Forms.DataGridViewTextBoxColumn updatebtn;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnUserDelete;
     }
 }

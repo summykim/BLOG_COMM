@@ -2300,6 +2300,8 @@ namespace BLOG_COMM
 
 				if (result)
 				{
+					if(!Common.UserGroup.Equals("admin"))
+						tabControl1.TabPages.Remove(tabControl1.TabPages[4]);
 					break;
 				}
 				else
@@ -2319,5 +2321,107 @@ namespace BLOG_COMM
         {
 			MessageBox.Show("준비중.");
         }
+		//사용자관리 검색
+        private void btnUserSearch_Click(object sender, EventArgs e)
+        {
+			adminUserSearch();
+
+		}
+
+		private void adminUserSearch()
+        {
+			UserRepository userRepo = new UserRepository();
+			List<Users> userlist = userRepo.GetUserWhere(txtSearchNaverId.Text, txtSearchUserName.Text);
+			UsersGridView.Rows.Clear();
+			for (int i = 0; i < userlist.Count; i++)
+			{
+				string[] rowdata = { userlist[i].Id, userlist[i].user_name, userlist[i].user_desc, userlist[i].naverId, userlist[i].user_group, (userlist[i].use_yn) ? "Y" : "N" };
+				UsersGridView.Rows.Add(rowdata);
+
+			}
+		}
+
+
+
+		private void UsersGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+			if (e.RowIndex < 0) return;
+			txtUserId.Text = (string)UsersGridView.Rows[e.RowIndex].Cells[0].Value;
+			txtUserName.Text = (string)UsersGridView.Rows[e.RowIndex].Cells[1].Value;
+			txtUserDesc.Text = (string)UsersGridView.Rows[e.RowIndex].Cells[2].Value;
+			txtNaverId.Text = (string)UsersGridView.Rows[e.RowIndex].Cells[3].Value;
+			cboUserGroup.Text = (string)UsersGridView.Rows[e.RowIndex].Cells[4].Value;
+			cboUse_YN.Text = (string)UsersGridView.Rows[e.RowIndex].Cells[5].Value;
+		}
+		//신규등록
+        private void btnUserReg_Click(object sender, EventArgs e)
+        {
+			UserRepository userRepo = new UserRepository();
+			Users user = new Users();
+			user.Id = txtUserId.Text; 
+			user.user_name = txtUserName.Text;
+			user.user_desc = txtUserDesc.Text;
+			user.naverId = txtNaverId.Text;
+			user.user_group = cboUserGroup.Text;
+			user.use_yn = (cboUse_YN.Text.Equals("Y"))?true:false;
+
+			Users checkUser  = userRepo.Get(user);
+
+			if (checkUser.naverId.Equals(user.naverId))
+            {
+				MessageBox.Show("네이버 아이디가 존재하므로  변경 부탁드립니다.");
+				return;
+            }
+			userRepo.Add(user);
+			MessageBox.Show("등록되었습니다.");
+			adminUserSearch();
+		}
+		//업데이트
+        private void btnUserUpd_Click(object sender, EventArgs e)
+        {
+            if (txtUserId.Text.Length == 0)
+            {
+				MessageBox.Show("수정할 사용자를 선택하세요.");
+				return;
+			}
+			UserRepository userRepo = new UserRepository();
+			Users user = new Users();
+			user.Id = txtUserId.Text;
+			user.user_name = txtUserName.Text;
+			user.user_desc = txtUserDesc.Text;
+			user.naverId = txtNaverId.Text;
+			user.user_group = cboUserGroup.Text;
+			user.use_yn = (cboUse_YN.Text.Equals("Y")) ? true : false;
+			DialogResult result = MessageBox.Show(txtUserName.Text + "(" + txtNaverId.Text + ") 님의 정보를 수정하시겠습니까?", "사용자정보수정", MessageBoxButtons.OKCancel);
+
+			if (result.Equals(DialogResult.Cancel)) return;//취소 
+
+			userRepo.Update(user);
+
+			MessageBox.Show("수정되었습니다.");
+			adminUserSearch();
+		}
+
+        private void btnUserDelete_Click(object sender, EventArgs e)
+        {
+			if (txtUserId.Text.Length == 0)
+			{
+				MessageBox.Show("삭제할 사용자를 선택하세요.");
+				return;
+			}
+			UserRepository userRepo = new UserRepository();
+			Users user = new Users();
+			user.Id = txtUserId.Text;
+
+
+			DialogResult result= MessageBox.Show(txtUserName.Text+"("+txtNaverId.Text+") 님을 삭제하시겠습니까?","사용자삭제",MessageBoxButtons.OKCancel);
+
+			if (result.Equals(DialogResult.Cancel)) return;//취소 
+
+			userRepo.Delete(user);
+
+			MessageBox.Show("삭제 되었습니다.");
+			adminUserSearch();
+		}
     }
 }
