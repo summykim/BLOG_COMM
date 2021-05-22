@@ -20,8 +20,29 @@ namespace BLOG_COMM
         }
 
         //로그인 버튼 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        private  void buttonLogin_Click(object sender, EventArgs e)
         {
+
+            UserRepository ur = new UserRepository();
+            List<Users> list = ur.GetUserWhereNaverId(txtId.Text);
+
+            if (list == null || list.Count==0)
+            {
+                MessageBox.Show("네이버 아이디( "+ txtId.Text+ " )에 대한 프로그램 사용 요청을 해주세요!.");
+                return;
+            }
+            else
+            {
+                if (list[0].use_yn == false)
+                {
+                    MessageBox.Show("네이버 아이디( " + txtId.Text + " )에 대한 프로그램 사용 중지 상태입니다!.");
+                    return;
+                }
+                Console.WriteLine(list[0].user_name);
+                Common.UserGroup = list[0].user_group;
+            }
+
+
             buttonLogin.Text = "로그인 처리중...";
             buttonLogin.Enabled = false;
             BgLoginWorker = new BackgroundWorker();

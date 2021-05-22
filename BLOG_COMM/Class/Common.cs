@@ -20,6 +20,7 @@ namespace BLOG_COMM
 		private  ChromeOptions _options = null;
 		public static ChromeDriver _driver = null;
 		public static UserInfo currUser = null;
+		public static string UserGroup="user";
 		private string action_url = "https://nid.naver.com/nidlogin.login";
 		public static string naver_blog_url = "https://blog.naver.com";
 

@@ -2313,5 +2313,11 @@ namespace BLOG_COMM
 			if (BwWorkJob.isDebug)
 				this.Text = this.Text + "[테스트용]";
 		}
+
+		//  사용자관리(네이버 아이디기준)
+        private void 사용자관리ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			MessageBox.Show("준비중.");
+        }
     }
 }

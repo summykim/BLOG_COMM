@@ -160,6 +160,9 @@
             this.cboResultCode = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.AutoWorkListSearch = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.AutoReplyWorkGrid = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.권한관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.사용자관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabFriends.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3.Panel1)).BeginInit();
@@ -286,6 +289,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboAutoWorkGrp)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboResultCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AutoReplyWorkGrid)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabFriends
@@ -1851,12 +1855,42 @@
             this.AutoReplyWorkGrid.Size = new System.Drawing.Size(1087, 535);
             this.AutoReplyWorkGrid.TabIndex = 0;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.권한관리ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1510, 24);
+            this.menuStrip1.TabIndex = 4;
+            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Visible = false;
+            // 
+            // 권한관리ToolStripMenuItem
+            // 
+            this.권한관리ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.사용자관리ToolStripMenuItem});
+            this.권한관리ToolStripMenuItem.Name = "권한관리ToolStripMenuItem";
+            this.권한관리ToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
+            this.권한관리ToolStripMenuItem.Text = "관리자";
+            this.권한관리ToolStripMenuItem.Visible = false;
+            // 
+            // 사용자관리ToolStripMenuItem
+            // 
+            this.사용자관리ToolStripMenuItem.Name = "사용자관리ToolStripMenuItem";
+            this.사용자관리ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.사용자관리ToolStripMenuItem.Text = "사용자관리";
+            this.사용자관리ToolStripMenuItem.Click += new System.EventHandler(this.사용자관리ToolStripMenuItem_Click);
+            // 
             // FormMyBlog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1510, 756);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMyBlog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "마블링";
@@ -1998,7 +2032,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.cboAutoWorkGrp)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboResultCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AutoReplyWorkGrid)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -2135,5 +2172,8 @@
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox FreindAutuJobName;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel22;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cboGroupType;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 권한관리ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 사용자관리ToolStripMenuItem;
     }
 }

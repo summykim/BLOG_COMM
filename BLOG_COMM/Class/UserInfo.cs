@@ -10,7 +10,7 @@ namespace BLOG_COMM
     {
         public string  Id { get; set; }
         public string Pwd { get; set; }
-
+        public string user_group { get; set; }
         public string BlogUrl { get; set; }
     }
 }
