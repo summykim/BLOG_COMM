@@ -41,7 +41,7 @@ namespace BLOG_COMM
 		// 로그인 폼 호출
 		private bool newLogin()
 		{
-
+		
             if (Common._driver!=null && Common._driver.WindowHandles.Count>0)
             {
 				return true;
@@ -67,6 +67,29 @@ namespace BLOG_COMM
 				return false;
 			}
 			
+		}
+		// 로그인 폼 호출
+		private bool retryLogin()
+		{
+
+			FormLogin frmLogin = new FormLogin();
+
+
+			frmLogin.ShowDialog();//로그인 폼 호출 
+
+			Application.DoEvents();
+
+			if (Common.currUser != null)//로그인 성공
+			{
+
+				return true;
+
+			}
+			else
+			{
+				return false;
+			}
+
 		}
 		/************************************************************************************************************************************
 		 * 내블로그 검색 start
@@ -154,7 +177,7 @@ namespace BLOG_COMM
 					IWebElement cntel = Common._driver.FindElementByXPath("//*[@id='category-name']/div/table[2]/tbody/tr/td[2]/div/h4");
 					int allcnt = int.Parse(cntel.Text.Replace("전체보기", "").Replace("개의 글", "").Trim());
 					var list = Common._driver.FindElementsByXPath("//*[@id='listTopForm']/table/tbody/tr");
-					
+
 					int index = 0, cnt = 1;
 					foreach (var el in list)
 					{
@@ -2137,6 +2160,11 @@ namespace BLOG_COMM
 		// 탭변경시 
 		private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
 		{
+            if (!Common.checkBrowser())
+            {
+				MessageBox.Show("웹브라우저가 종료되었습니다.다시 로그인해주세요.");
+				retryLogin();
+            }
 			// 블로그홈 댓글 탭
 			if (tabControl1.SelectedIndex == 3)
 			{
@@ -2273,7 +2301,7 @@ namespace BLOG_COMM
 				Common._driver.Quit();
 
 
-			DbUtil.DbClose();
+			 DbUtil.DbClose();
 		}
 
 		// 날짜검색조건 추가 여부 

@@ -33,6 +33,27 @@ namespace BLOG_COMM
 			optionInit();
 		}
 
+		 public static bool checkBrowser()
+        {
+            try
+            {
+				if (_driver != null && _driver.Title != null)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}catch(Exception ex)
+            {
+				Console.WriteLine(ex.Message);
+				return false;
+			}
+
+			
+
+		}
 
 		// 크롬드라이버  설정 
 		public void optionInit()
@@ -144,6 +165,8 @@ namespace BLOG_COMM
 		// 엘리먼트 찾기 
 		public static IWebElement FindElement(By selector)
 		{
+			if (_driver == null) return null;
+
 			// Return null by default
 			IWebElement elementToReturn = null;
 
