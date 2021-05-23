@@ -15,10 +15,10 @@ namespace BLOG_COMM
     public class App_logs : Base
     {
         [FirestoreProperty]
-        public DateTime reg_dtm { get; set; }
+        public Timestamp reg_dtm { get; set; }
 
         [FirestoreProperty]
-        public Users user { get; set; }
+        public String naverId { get; set; }
     }
     [FirestoreData]
     public class Users : Base

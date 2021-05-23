@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComponentFactory.Krypton.Toolkit;
+using Google.Cloud.Firestore;
+
 namespace BLOG_COMM
 {
     public partial class FormLogin :  KryptonForm
@@ -42,7 +44,11 @@ namespace BLOG_COMM
                 Common.UserGroup = list[0].user_group;
             }
 
-
+            LogRepository logRep = new LogRepository();
+            App_logs app_Logs = new App_logs();
+            app_Logs.naverId = txtId.Text;
+            app_Logs.reg_dtm= Timestamp.GetCurrentTimestamp();
+            logRep.Add(app_Logs);
             buttonLogin.Text = "로그인 처리중...";
             buttonLogin.Enabled = false;
             BgLoginWorker = new BackgroundWorker();
