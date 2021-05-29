@@ -20,9 +20,10 @@ namespace BLOG_COMM
         public bool Delete(App_logs record) => repo.Delete(record);
         public App_logs Get(App_logs record) => repo.Get(record);
         public List<App_logs> GetAll() => repo.GetAll<App_logs>();
-        public List<App_logs> GetUserWhereNaverId(string NaverId)
+        public List<App_logs> GetAccessLogWhereNaverId(string NaverId)
         {
-             Query query = repo.fireStoreDb.Collection(collectionName).WhereEqualTo(nameof(Users.naverId), NaverId);
+             Query query = repo.fireStoreDb.Collection(collectionName)
+                              .WhereEqualTo(nameof(Users.naverId), NaverId).Limit(10);
             return repo.QueryRecords<App_logs>(query);
         }
  

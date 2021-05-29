@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMyBlog));
             this.tabFriends = new System.Windows.Forms.TabPage();
             this.kryptonSplitContainer3 = new ComponentFactory.Krypton.Toolkit.KryptonSplitContainer();
             this.kryptonGroupBox11 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
@@ -70,6 +71,7 @@
             this.kryptonLabel10 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.searchId = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonGroupBox9 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.btnAddNFriendStart = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnFriendsInit = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnFriendsStop = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.progressText = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -162,6 +164,8 @@
             this.AutoReplyWorkGrid = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
             this.tabAdmin = new System.Windows.Forms.TabPage();
             this.kryptonGroupBox23 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.btnUserDelete = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnUserUpd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonLabel35 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.cboUserGroup = new Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel34 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -183,6 +187,12 @@
             this.txtSearchNaverId = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonGroupBox20 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.UsersGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.key = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.naverId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user_group = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updatebtn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kryptonGroupBox21 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.kryptonButton2 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonLabel23 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -192,14 +202,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.권한관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.사용자관리ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnUserUpd = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.key = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.user_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.user_desc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.naverId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.user_group = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updatebtn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnUserDelete = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.tabFriends.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonSplitContainer3.Panel1)).BeginInit();
@@ -832,6 +834,7 @@
             // 
             // kryptonGroupBox9.Panel
             // 
+            this.kryptonGroupBox9.Panel.Controls.Add(this.btnAddNFriendStart);
             this.kryptonGroupBox9.Panel.Controls.Add(this.btnFriendsInit);
             this.kryptonGroupBox9.Panel.Controls.Add(this.btnFriendsStop);
             this.kryptonGroupBox9.Panel.Controls.Add(this.progressText);
@@ -843,6 +846,16 @@
             this.kryptonGroupBox9.Size = new System.Drawing.Size(1496, 71);
             this.kryptonGroupBox9.TabIndex = 1;
             this.kryptonGroupBox9.Values.Heading = "이웃블로거 수집 조건";
+            // 
+            // btnAddNFriendStart
+            // 
+            this.btnAddNFriendStart.Location = new System.Drawing.Point(878, 11);
+            this.btnAddNFriendStart.Name = "btnAddNFriendStart";
+            this.btnAddNFriendStart.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnAddNFriendStart.Size = new System.Drawing.Size(104, 30);
+            this.btnAddNFriendStart.TabIndex = 24;
+            this.btnAddNFriendStart.Values.Text = "이웃추가작업";
+            this.btnAddNFriendStart.Click += new System.EventHandler(this.btnAddNFriendStart_Click_1);
             // 
             // btnFriendsInit
             // 
@@ -1851,6 +1864,7 @@
             // 
             // searchRegdate
             // 
+            this.searchRegdate.CalendarTodayDate = new System.DateTime(2021, 5, 26, 0, 0, 0, 0);
             this.searchRegdate.Enabled = false;
             this.searchRegdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.searchRegdate.Location = new System.Drawing.Point(160, 21);
@@ -1954,6 +1968,26 @@
             this.kryptonGroupBox23.Size = new System.Drawing.Size(793, 102);
             this.kryptonGroupBox23.TabIndex = 9;
             this.kryptonGroupBox23.Values.Heading = "변경";
+            // 
+            // btnUserDelete
+            // 
+            this.btnUserDelete.Location = new System.Drawing.Point(717, 44);
+            this.btnUserDelete.Name = "btnUserDelete";
+            this.btnUserDelete.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnUserDelete.Size = new System.Drawing.Size(69, 30);
+            this.btnUserDelete.TabIndex = 18;
+            this.btnUserDelete.Values.Text = "삭제";
+            this.btnUserDelete.Click += new System.EventHandler(this.btnUserDelete_Click);
+            // 
+            // btnUserUpd
+            // 
+            this.btnUserUpd.Location = new System.Drawing.Point(624, 44);
+            this.btnUserUpd.Name = "btnUserUpd";
+            this.btnUserUpd.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnUserUpd.Size = new System.Drawing.Size(69, 30);
+            this.btnUserUpd.TabIndex = 17;
+            this.btnUserUpd.Values.Text = "수정";
+            this.btnUserUpd.Click += new System.EventHandler(this.btnUserUpd_Click);
             // 
             // kryptonLabel35
             // 
@@ -2097,18 +2131,18 @@
             this.kryptonGroupBox22.Panel.Controls.Add(this.txtSearchUserName);
             this.kryptonGroupBox22.Panel.Controls.Add(this.kryptonLabel30);
             this.kryptonGroupBox22.Panel.Controls.Add(this.txtSearchNaverId);
-            this.kryptonGroupBox22.Size = new System.Drawing.Size(793, 71);
+            this.kryptonGroupBox22.Size = new System.Drawing.Size(794, 71);
             this.kryptonGroupBox22.TabIndex = 8;
             this.kryptonGroupBox22.Values.Heading = "검색조건";
             // 
             // btnUserSearch
             // 
-            this.btnUserSearch.Location = new System.Drawing.Point(672, 7);
+            this.btnUserSearch.Location = new System.Drawing.Point(654, 7);
             this.btnUserSearch.Name = "btnUserSearch";
             this.btnUserSearch.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
             this.btnUserSearch.Size = new System.Drawing.Size(108, 30);
             this.btnUserSearch.TabIndex = 8;
-            this.btnUserSearch.Values.Text = "검색";
+            this.btnUserSearch.Values.Text = "사용자검색";
             this.btnUserSearch.Click += new System.EventHandler(this.btnUserSearch_Click);
             // 
             // kryptonLabel28
@@ -2189,6 +2223,48 @@
             this.UsersGridView.Size = new System.Drawing.Size(790, 485);
             this.UsersGridView.TabIndex = 0;
             this.UsersGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.UsersGridView_CellClick);
+            // 
+            // key
+            // 
+            this.key.HeaderText = "Id";
+            this.key.Name = "key";
+            this.key.ReadOnly = true;
+            // 
+            // user_name
+            // 
+            this.user_name.HeaderText = "사용자명";
+            this.user_name.Name = "user_name";
+            this.user_name.ReadOnly = true;
+            // 
+            // user_desc
+            // 
+            this.user_desc.HeaderText = "사용자설명";
+            this.user_desc.Name = "user_desc";
+            this.user_desc.ReadOnly = true;
+            this.user_desc.Width = 200;
+            // 
+            // naverId
+            // 
+            this.naverId.HeaderText = "네이버아이디";
+            this.naverId.Name = "naverId";
+            this.naverId.ReadOnly = true;
+            this.naverId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.naverId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // user_group
+            // 
+            this.user_group.HeaderText = "사용자구분";
+            this.user_group.Name = "user_group";
+            this.user_group.ReadOnly = true;
+            this.user_group.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.user_group.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // updatebtn
+            // 
+            this.updatebtn.HeaderText = "사용여부";
+            this.updatebtn.Name = "updatebtn";
+            this.updatebtn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.updatebtn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // kryptonGroupBox21
             // 
@@ -2280,68 +2356,6 @@
             this.사용자관리ToolStripMenuItem.Text = "사용자관리";
             this.사용자관리ToolStripMenuItem.Click += new System.EventHandler(this.사용자관리ToolStripMenuItem_Click);
             // 
-            // btnUserUpd
-            // 
-            this.btnUserUpd.Location = new System.Drawing.Point(624, 44);
-            this.btnUserUpd.Name = "btnUserUpd";
-            this.btnUserUpd.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.btnUserUpd.Size = new System.Drawing.Size(69, 30);
-            this.btnUserUpd.TabIndex = 17;
-            this.btnUserUpd.Values.Text = "수정";
-            this.btnUserUpd.Click += new System.EventHandler(this.btnUserUpd_Click);
-            // 
-            // key
-            // 
-            this.key.HeaderText = "Id";
-            this.key.Name = "key";
-            this.key.ReadOnly = true;
-            // 
-            // user_name
-            // 
-            this.user_name.HeaderText = "사용자명";
-            this.user_name.Name = "user_name";
-            this.user_name.ReadOnly = true;
-            // 
-            // user_desc
-            // 
-            this.user_desc.HeaderText = "사용자설명";
-            this.user_desc.Name = "user_desc";
-            this.user_desc.ReadOnly = true;
-            this.user_desc.Width = 200;
-            // 
-            // naverId
-            // 
-            this.naverId.HeaderText = "네이버아이디";
-            this.naverId.Name = "naverId";
-            this.naverId.ReadOnly = true;
-            this.naverId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.naverId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // user_group
-            // 
-            this.user_group.HeaderText = "사용자구분";
-            this.user_group.Name = "user_group";
-            this.user_group.ReadOnly = true;
-            this.user_group.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.user_group.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // updatebtn
-            // 
-            this.updatebtn.HeaderText = "사용여부";
-            this.updatebtn.Name = "updatebtn";
-            this.updatebtn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.updatebtn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // btnUserDelete
-            // 
-            this.btnUserDelete.Location = new System.Drawing.Point(717, 44);
-            this.btnUserDelete.Name = "btnUserDelete";
-            this.btnUserDelete.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.btnUserDelete.Size = new System.Drawing.Size(69, 30);
-            this.btnUserDelete.TabIndex = 18;
-            this.btnUserDelete.Values.Text = "삭제";
-            this.btnUserDelete.Click += new System.EventHandler(this.btnUserDelete_Click);
-            // 
             // FormMyBlog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -2349,10 +2363,11 @@
             this.ClientSize = new System.Drawing.Size(1510, 756);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMyBlog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "마블링";
+            this.Text = "마블링 1.0";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMyBlog_FormClosed);
             this.Load += new System.EventHandler(this.FormMyBlog_Load);
             this.tabFriends.ResumeLayout(false);
@@ -2694,5 +2709,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn user_group;
         private System.Windows.Forms.DataGridViewTextBoxColumn updatebtn;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnUserDelete;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddNFriendStart;
     }
 }

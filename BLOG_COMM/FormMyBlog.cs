@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLOG_COMM.Class;
 using ComponentFactory.Krypton.Toolkit;
+using Google.Cloud.Firestore;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -29,7 +30,7 @@ namespace BLOG_COMM
 
 			InitializeComponent();
 
-
+			this.Text="마블링 "+Application.ProductVersion;
 
 		}
 
@@ -2369,8 +2370,6 @@ namespace BLOG_COMM
 			}
 		}
 
-
-
 		private void UsersGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 			if (e.RowIndex < 0) return;
@@ -2451,5 +2450,14 @@ namespace BLOG_COMM
 			MessageBox.Show("삭제 되었습니다.");
 			adminUserSearch();
 		}
+
+
+
+        private void btnAddNFriendStart_Click_1(object sender, EventArgs e)
+        {
+			FormAddNFriends formAddF = new FormAddNFriends();
+			formAddF.ShowDialog();
+		}
+
     }
 }

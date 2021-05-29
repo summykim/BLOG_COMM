@@ -138,25 +138,84 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <metadata name="key.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="user_name.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="user_desc.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="naverId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="user_group.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="updatebtn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAABMLAAATCwAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApqWUAKallQCmpZU3pqWV36allf+mpZX/pqWV/6al
+        lf+mpZX/pqWV/6allf+mpZX/pqWV/6allf+mpZXfpqWVN6allQClpZQAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApqWVAKellQCmpZVspqWV+6al
+        lf+mpZX/pqWV/6allf+mpZX/pqWV/6allf+mpZX/pqWV+qallWunppUApqWVAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApqWVAKal
+        lROmpZXHpqWV/6allf+mpZX/pqWV/6allf+mpZX/pqWV/6allf+mpZXGpqWVE6allQAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAClpJQAoaCQAKSjk36jopL/o6KS/6Oikv+jopL/o6KS/6Oikv+jopL/o6KS/6Sjk32hoZAApaSVAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMbCvADEwr0BxMK9AcTCvQHEwr0BxMK9AcTC
+        vQHEwr0BxMK9AcTCvQGAf3AAkpGETZCPgvqQj4L/kI+C/5CPgv+Qj4L/kI+C/5CPgv+Qj4L6kpGETYB/
+        cADEwr0BxMK9AcTCvQHEwr0BxMK9AcTCvQHEwr0BxMK9AcXCvQHHw7wAx8O9YcfDvaHHw72kx8O9pMfD
+        vaTHw72kx8O9pMfDvaTHw72kx8O9pMfDvaPAvba5s7Co+7Kvp/+yr6f/sq+n/7Kvp/+yr6f/sq+n/7Ow
+        qPvAvba5x8O9o8fDvaTHw72kx8O9pMfDvaTHw72kx8O9pMfDvaTHw72kx8O9ocfDvWHHw73yyMS+/8jE
+        vv/IxL7/yMS+/8jEvv/IxL7/yMS+/8jEvv/IxL7/yMS+/8jEvv/Jxb//ycW//8nFv//Jxb//ycW//8nF
+        v//Jxb//ycW//8jEvv/IxL7/yMS+/8jEvv/IxL7/yMS+/8jEvv/IxL7/yMS+/8jEvv/IxL7/x8O98sfD
+        vf+/ubL/urSs/7mzq/+5s6v/ubOs/7mzrP+5s6z/ubOs/7mzrP+5s6z/ubOs/7mzrP+5s6z/ubOs/7mz
+        rP+5s6z/ubOs/7mzrP+5s6z/ubOs/7mzrP+5s6z/ubOs/7mzrP+5s6z/ubOs/7mzrP+5s6z/ubOs/765
+        sv/Hw73/x8K8/4x+cP9pVkL/ZVNB/19PPv9eTj3/Xk49/15OPf9eTj3/Xk49/15OPf9eTj3/Xk49/15O
+        Pf9eTj3/Xk49/15OPf9eTj3/Xk49/15OPf9eTj3/Xk49/15OPf9eTj3/Xk49/15OPf9eTj3/Xk49/15O
+        Pf9cTDv/g3dq/8bCvP/Gwrz/g3Rl/1tGMf9dSDP/WkYx/1NALf9PPSv/Tz0r/089K/9PPSv/Tz0r/089
+        K/9PPSv/Tz0r/089K/9PPSv/Tz0r/089K/9PPSv/Tz0r/089K/9PPSv/Tz0r/089K/9PPSv/Tz0r/089
+        K/9PPSv/Tz0r/007KP95bF7/xsK8/8bCvP+EdWX/XEcy/15JNP9eSTT/XUg0/1hFMf9SQC3/UD4s/1A+
+        LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+
+        LP9QPiz/UD4s/1A+LP9QPiz/Tjwp/3psX//Gwrz/xsK8/4R1Zf9cRzL/Xkk0/15JNP9eSTT/Xkk0/1xH
+        M/9WQy//UT8s/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+
+        LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9OPCn/emxf/8bCvP/Gwrz/hHVl/1xHMv9eSTT/Xkk0/15J
+        NP9eSTT/Xkk0/15JNP9aRjL/U0Eu/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+
+        LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/048Kf96bF//xsK8/8bCvP+EdWX/XEcy/15J
+        NP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9dSDP/V0Qw/1E/Lf9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+
+        LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/Tjwp/3psX//Gwrz/xsK8/4R1
+        Zf9cRzL/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/W0cy/1VCL/9QPiz/UD4s/1A+
+        LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9OPCn/emxf/8bC
+        vP/Gwrz/hHVl/1xHMv9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/XUk0/1lF
+        Mf9TQC3/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/048
+        Kf96bF//xsK8/8bCvP+EdWX/XEcy/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15J
+        NP9eSTT/Xkk0/1xIM/9WQzD/UT8t/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+
+        LP9QPiz/Tjwp/3psX//Gwrz/xsK8/4R1Zf9cRzL/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15J
+        NP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9aRjL/VEEu/1A+LP9QPiz/UD4s/1A+LP9QPiz/UD4s/1A+
+        LP9QPiz/UD4s/1A+LP9OPCn/emxf/8bCvP/Gwrz/hHVl/1xHMv9eSTT/Xkk0/15JNP9eSTT/Xkk0/15J
+        NP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9dSDT/WEQx/1I/Lf9QPiz/UD4s/1A+
+        LP9QPiz/UD4s/1A+LP9QPiz/UD4s/048Kf96bF//xsK8/8bCvP+EdWX/XEcy/15JNP9eSTT/Xkk0/15J
+        NP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/XEcz/1VC
+        L/9RPiz/UD4s/1A+LP9QPiz/UD4s/1A+LP9QPiz/Tjwp/3psX//Gwrz/xsK8/4R1Zf9cRzL/Xkk0/15J
+        NP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15J
+        NP9eSTT/Xkk0/1lFMf9TQC7/UD4s/1A+LP9QPiz/UD4s/1A+LP9OPCn/emxf/8bCvP/Gwrz/hHVl/1xH
+        Mv9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15J
+        NP9eSTT/Xkk0/15JNP9eSTT/Xkk0/11IM/9XQzD/UT8t/1A+LP9QPiz/UD4s/048Kf96bF//xsK8/8bC
+        vP+EdWX/XEcy/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15J
+        NP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9bRzL/VEEu/1A+LP9QPiz/Tjwp/3ps
+        X//Gwrz/xsK8/4R1Zf9cRzL/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15J
+        NP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9dSDT/WEUx/1JA
+        Lf9OPCn/emxf/8bCvP/Gwrz/hHVl/1xHMv9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15J
+        NP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15JNP9eSTT/Xkk0/15J
+        NP9eSTT/XEcz/1RALf96bV//xsK8/8bCvP+CdGT/WkUw/1xHMv9cRzL/XEcy/1xHMv9cRzL/XEcy/1xH
+        Mv9cRzL/XEcy/1xHMv9cRzL/XEcy/1xHMv9cRzL/XEcy/1xHMv9cRzL/XEcy/1xHMv9cRzL/XEcy/1xH
+        Mv9cRzL/XEcy/1xHMv9cRzL/WkQv/4FyYv/Gwrz/x8O9/ZyRhf+DdGP/hHVl/4R1Zf+EdWX/hHVl/4R1
+        Zf+EdWX/hHVl/4R1Zf+EdWX/hHVl/4R1Zf+EdWX/hHVl/4R1Zf+EdWX/hHVl/4R1Zf+EdWX/hHVl/4R1
+        Zf+EdWX/hHVl/4R1Zf+EdWX/hHVl/4R1Zf+DdGP/nJGF/8fDvf3Hw72oxsK838bCvODGwrzgxsK84MbC
+        vODGwrzgxsK84MbCvODGwrzgxsK84MbCvODGwrzgxsK84MbCvODGwrzgxsK84MbCvODGwrzgxsK84MbC
+        vODGwrzgxsK84MbCvODGwrzgxsK84MbCvODGwrzgxsK84MbCvODGwrzfx8O9qMfDvQvHw74dx8O+H8fD
+        vh/Hw74fx8O+H8fDvh/Hw74fx8O+H8fDvh/Hw74fx8O+H8fDvh/Hw74fx8O+H8fDvh/Hw74fx8O+H8fD
+        vh/Hw74fx8O+H8fDvh/Hw74fx8O+H8fDvh/Hw74fx8O+H8fDvh/Hw74fx8O+H8fDvh3Hw70LAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA/4AB///AA///wAP//+AH/4AgBAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAD///////////////8=
+</value>
+  </data>
 </root>

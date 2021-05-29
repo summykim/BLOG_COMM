@@ -24,9 +24,20 @@ namespace BLOG_COMM
         //로그인 버튼 
         private  void buttonLogin_Click(object sender, EventArgs e)
         {
+            List<Users> list = null;
+            Common.debugPrint("start login!!");
+            try
+            {
 
-            UserRepository ur = new UserRepository();
-            List<Users> list = ur.GetUserWhereNaverId(txtId.Text);
+                UserRepository ur = new UserRepository();
+                list = ur.GetUserWhereNaverId(txtId.Text);
+
+            }catch(Exception ex)
+            {
+                Common.debugPrint(ex.Message);
+                return;
+            }
+            Common.debugPrint("start login2");
 
             if (list == null || list.Count==0)
             {
@@ -46,7 +57,7 @@ namespace BLOG_COMM
 
             LogRepository logRep = new LogRepository();
             App_logs app_Logs = new App_logs();
-            app_Logs.naverId = txtId.Text;
+            app_Logs.naverId = txtId.Text;            
             app_Logs.reg_dtm= Timestamp.GetCurrentTimestamp();
             logRep.Add(app_Logs);
             buttonLogin.Text = "로그인 처리중...";

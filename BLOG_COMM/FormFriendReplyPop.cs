@@ -101,7 +101,7 @@ namespace BLOG_COMM
 		}
 
 		//첫번째 글찾기
-		private async void FindFirstPosting()
+		private  void FindFirstPosting()
 		{
 			// 이웃블로그 댓글달기
 
@@ -277,7 +277,7 @@ namespace BLOG_COMM
 		}
 
 		// 백그라운드 작업 결과  화면 업데이트
-		private async void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
+		private  void bw_ProgressChanged(object sender, ProgressChangedEventArgs e)
 		{
 
 			string status= (string)e.UserState;

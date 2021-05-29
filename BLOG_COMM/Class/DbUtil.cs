@@ -16,9 +16,6 @@ namespace BLOG_COMM
         private  static OleDbConnection conn = null;
 
         private static OleDbCommand cmd;
-        private static OleDbDataAdapter da;
-        private static DataSet ds;
-        private static DataTable dt;
         public static string ConnectionString= @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source = marbling.accdb";
 
         public   DbUtil()
@@ -1124,5 +1121,91 @@ namespace BLOG_COMM
             }
 
         }
+
+
+
+
+        //이웃추가 작업 로그  등록
+        public static void InsertAddFreindJobLog(string friend_id)
+        {
+            DBinit();
+            cmd.CommandType = CommandType.Text;
+            String sql = " INSERT  INTO AddFriendJobLog( friend_id,owner) " +
+                                                 "values( @friend_id,@owner) ";
+            cmd.CommandText = sql;
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@friend_id", friend_id);
+            cmd.Parameters.AddWithValue("@owner", Common.currUser.Id);
+            try
+            {
+                int result = cmd.ExecuteNonQuery();
+                Common.log.Debug(result.ToString() + "insert conunt");
+            }
+            catch (SqlException e)
+            {
+                Common.log.Debug(e.Message.ToString() + "Error Message");
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+        }
+
+        // 이웃추가 작업 로그 조회
+        public static List<AddFriendJobModel> getAddFreindJobLog(string regdate = "", string  friend_id = "" )
+        {
+            DBinit();
+
+            String sql = "SELECT  friend_id ,reg_dtm " +
+                          "FROM  AddFriendJobLog  WHERE 1=1";
+            if (friend_id.Length > 0)
+            {
+                sql += " AND  friend_id ='" + friend_id + "' "; ;
+            }
+
+            if (regdate.Length > 0)
+            {
+                sql += " AND  reg_dtm  >=#" + regdate + " 00:00:00#";//등록일자
+                sql += " AND  reg_dtm  <=#" + regdate + " 23:59:59#";//등록일자
+            }
+
+            sql += " AND  owner = '" + Common.currUser.Id + "' ";
+
+            Common.log.Debug(sql);
+            cmd.CommandText = sql;
+
+
+
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+
+
+            DataTable ds = new DataTable();
+            try
+            {
+                da.Fill(ds);
+            }
+            catch (Exception e)
+            {
+                Common.log.Debug("에러가 발생했어요." + e.Message.ToString());
+            }
+
+            List<AddFriendJobModel> list = new List<AddFriendJobModel>();
+            if (ds.Rows.Count > 0)
+            {
+                for(int i=0;i< ds.Rows.Count; i++)
+                {
+                    AddFriendJobModel friendLog = new AddFriendJobModel();
+                    friendLog.friend_id = ds.Rows[i].Field<string>("friend_id");
+                    friendLog.reg_dtm = ds.Rows[i].Field<DateTime>("reg_dtm");
+                    list.Add(friendLog);
+                }
+
+             }
+
+            return list;
+
+        }
+
     }
 }
