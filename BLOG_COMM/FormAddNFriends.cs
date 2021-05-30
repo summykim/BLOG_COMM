@@ -127,7 +127,8 @@ namespace BLOG_COMM
 						List<string> userstate = new List<string>();
 						userstate.Add(pageNo.ToString());//페이지번호
 						userstate.Add(processCnt.ToString());//진행건수
-						userstate.Add(maxCnt.ToString());//목표건수					
+						userstate.Add(maxCnt.ToString());//목표건수
+						userstate.Add(grpNm);//그룹명			
 						BgWorker.ReportProgress(successCnt, userstate);
 
 						// 글쓴이 찾기 
@@ -258,7 +259,7 @@ namespace BLOG_COMM
 
 							}
 							// DB 로그 등록
-							DbUtil.InsertAddFreindJobLog(friend_id);
+							DbUtil.InsertAddFreindJobLog(friend_id, grpNm);
 							++successCnt;
 						}
 						catch (Exception ex)
@@ -277,7 +278,7 @@ namespace BLOG_COMM
 
 					// 오늘 작업이  최대값을 초과했는지 확인  작업 종료 조건
 					string today = DateTime.Today.ToShortDateString();
-					List<AddFriendJobModel> curList=DbUtil.getAddFreindJobLog(today);
+					List<AddFriendJobModel> curList=DbUtil.getAddFreindJobLog(grpNm,today);
 					if(curList.Count>=maxCnt )
                     {
 						BgWorker.CancelAsync();
@@ -314,21 +315,26 @@ namespace BLOG_COMM
 			string pageNo= userstate[i++];//페이지번호
 			string processCnt = userstate[i++];//진행건수
 			string maxCnt = userstate[i++];//목표건수		
+			string grpNm = userstate[i++];//그룹명		
 
 			StatusLabel.Text = "성공건수: " + e.ProgressPercentage.ToString() ;
 			StatusLabel2.Text = "현재페이지: " + pageNo;
 			StatusLabel3.Text = "전체진행건수: " + processCnt;
 
-			var list = DbUtil.getAddFreindJobLog(DateTime.Today.ToShortDateString());
+			var list = DbUtil.getAddFreindJobLog(grpNm,DateTime.Today.ToShortDateString());
 			int today_cnt = 0;
 			if (list!=null) today_cnt = list.Count;
 			StatusLabel4.Text = "오늘이웃추가건수: " + today_cnt.ToString();
+
+			this.TopMost = true;
 
 			// 오늘 작업이  최대값을 초과했는지 확인  작업 종료 조건
 
 			if (today_cnt >=int.Parse(maxCnt) )
 			{
 				BgWorker.CancelAsync();
+				MessageBox.Show(grpNm + " 그룹 멤버수 초과하여 작업을 중지합니다.");
+
 			}
 		}
 
@@ -340,7 +346,9 @@ namespace BLOG_COMM
 			btnAddNFriendStart.Enabled = true;
 
 			BgWorker.Dispose();
-			if(e.Cancelled)
+
+			this.TopMost = false;
+			if (e.Cancelled)
 				MessageBox.Show("이웃추가작업이 취소 되었습니다.", "작업중지");
 			else
 				MessageBox.Show("이웃추가작업이 완료 되었습니다.", "작업완료");

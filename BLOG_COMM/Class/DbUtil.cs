@@ -1126,15 +1126,16 @@ namespace BLOG_COMM
 
 
         //이웃추가 작업 로그  등록
-        public static void InsertAddFreindJobLog(string friend_id)
+        public static void InsertAddFreindJobLog(string friend_id,string grp_nm)
         {
             DBinit();
             cmd.CommandType = CommandType.Text;
-            String sql = " INSERT  INTO AddFriendJobLog( friend_id,owner) " +
-                                                 "values( @friend_id,@owner) ";
+            String sql = " INSERT  INTO AddFriendJobLog( friend_id,grp_nm,owner) " +
+                                                 "values( @friend_id,@grp_nm,@owner) ";
             cmd.CommandText = sql;
             cmd.Parameters.Clear();
             cmd.Parameters.AddWithValue("@friend_id", friend_id);
+            cmd.Parameters.AddWithValue("@grp_nm", grp_nm);
             cmd.Parameters.AddWithValue("@owner", Common.currUser.Id);
             try
             {
@@ -1153,15 +1154,19 @@ namespace BLOG_COMM
         }
 
         // 이웃추가 작업 로그 조회
-        public static List<AddFriendJobModel> getAddFreindJobLog(string regdate = "", string  friend_id = "" )
+        public static List<AddFriendJobModel> getAddFreindJobLog(string grp_nm,string regdate = "", string  friend_id = "" )
         {
             DBinit();
 
-            String sql = "SELECT  friend_id ,reg_dtm " +
+            String sql = "SELECT  friend_id ,grp_nm,reg_dtm " +
                           "FROM  AddFriendJobLog  WHERE 1=1";
             if (friend_id.Length > 0)
             {
                 sql += " AND  friend_id ='" + friend_id + "' "; ;
+            }
+            if (grp_nm.Length > 0)
+            {
+                sql += " AND  grp_nm ='" + grp_nm + "' "; ;
             }
 
             if (regdate.Length > 0)

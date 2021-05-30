@@ -7378,11 +7378,11 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Marbling"
         "ProductCode" = "8:{044438FA-7748-476C-8A1F-77E775EE516E}"
-        "PackageCode" = "8:{A1465829-4333-4C61-B02B-31FD8A27F211}"
+        "PackageCode" = "8:{63AFD58A-E733-459B-9A3E-FA4F16BE3C6C}"
         "UpgradeCode" = "8:{D537B595-29CF-4A58-80AD-3C19D6FC4FFC}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:TRUE"
+        "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
@@ -7926,6 +7926,34 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_0011ECAF37C644D8AEDF8C273808CD6C"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_848E7989774A4607A45D3B120D91A7FB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:LocalizedResourceDlls"
+            "OutputProjectGuid" = "8:{09B0430F-3F9E-44A3-BF92-6AA0CD7470D6}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_302BFE7F7B4F439A9D24606BAF463937"
             {
             "SourcePath" = "8:..\\BLOG_COMM\\obj\\Release\\BLOG_COMM.exe"
