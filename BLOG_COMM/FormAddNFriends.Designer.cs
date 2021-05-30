@@ -30,6 +30,7 @@ namespace BLOG_COMM
         private void InitializeComponent()
         {
             this.kryptonGroupBox24 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.btnAddNFriendCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtAddGrpNm = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.btnAddNFriendStart = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -43,14 +44,16 @@ namespace BLOG_COMM
             this.StatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.StatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.StatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.btnAddNFriendCancel = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.StatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.kryptonLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.cboDelay = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox24)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonGroupBox24.Panel)).BeginInit();
             this.kryptonGroupBox24.Panel.SuspendLayout();
             this.kryptonGroupBox24.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboNFriendMaxCnt)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDelay)).BeginInit();
             this.SuspendLayout();
             // 
             // kryptonGroupBox24
@@ -61,6 +64,8 @@ namespace BLOG_COMM
             // 
             // kryptonGroupBox24.Panel
             // 
+            this.kryptonGroupBox24.Panel.Controls.Add(this.kryptonLabel2);
+            this.kryptonGroupBox24.Panel.Controls.Add(this.cboDelay);
             this.kryptonGroupBox24.Panel.Controls.Add(this.btnAddNFriendCancel);
             this.kryptonGroupBox24.Panel.Controls.Add(this.kryptonLabel1);
             this.kryptonGroupBox24.Panel.Controls.Add(this.txtAddGrpNm);
@@ -74,6 +79,16 @@ namespace BLOG_COMM
             this.kryptonGroupBox24.Size = new System.Drawing.Size(545, 293);
             this.kryptonGroupBox24.TabIndex = 2;
             this.kryptonGroupBox24.Values.Heading = "이웃추가설정";
+            // 
+            // btnAddNFriendCancel
+            // 
+            this.btnAddNFriendCancel.Location = new System.Drawing.Point(339, 222);
+            this.btnAddNFriendCancel.Name = "btnAddNFriendCancel";
+            this.btnAddNFriendCancel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
+            this.btnAddNFriendCancel.Size = new System.Drawing.Size(179, 30);
+            this.btnAddNFriendCancel.TabIndex = 27;
+            this.btnAddNFriendCancel.Values.Text = "이웃추가 작업 취소";
+            this.btnAddNFriendCancel.Click += new System.EventHandler(this.btnAddNFriendCancel_Click);
             // 
             // kryptonLabel1
             // 
@@ -198,20 +213,39 @@ namespace BLOG_COMM
             this.StatusLabel3.Name = "StatusLabel3";
             this.StatusLabel3.Size = new System.Drawing.Size(0, 17);
             // 
-            // btnAddNFriendCancel
-            // 
-            this.btnAddNFriendCancel.Location = new System.Drawing.Point(339, 222);
-            this.btnAddNFriendCancel.Name = "btnAddNFriendCancel";
-            this.btnAddNFriendCancel.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparkleBlue;
-            this.btnAddNFriendCancel.Size = new System.Drawing.Size(179, 30);
-            this.btnAddNFriendCancel.TabIndex = 27;
-            this.btnAddNFriendCancel.Values.Text = "이웃추가 작업 취소";
-            this.btnAddNFriendCancel.Click += new System.EventHandler(this.btnAddNFriendCancel_Click);
-            // 
             // StatusLabel4
             // 
             this.StatusLabel4.Name = "StatusLabel4";
             this.StatusLabel4.Size = new System.Drawing.Size(0, 17);
+            // 
+            // kryptonLabel2
+            // 
+            this.kryptonLabel2.Location = new System.Drawing.Point(420, 54);
+            this.kryptonLabel2.Name = "kryptonLabel2";
+            this.kryptonLabel2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.SparklePurple;
+            this.kryptonLabel2.Size = new System.Drawing.Size(62, 20);
+            this.kryptonLabel2.TabIndex = 29;
+            this.kryptonLabel2.Values.Text = "delay(초):";
+            // 
+            // cboDelay
+            // 
+            this.cboDelay.DropDownWidth = 92;
+            this.cboDelay.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.cboDelay.Location = new System.Drawing.Point(478, 54);
+            this.cboDelay.Name = "cboDelay";
+            this.cboDelay.Size = new System.Drawing.Size(50, 21);
+            this.cboDelay.TabIndex = 28;
+            this.cboDelay.Text = "1";
             // 
             // FormAddNFriends
             // 
@@ -231,6 +265,7 @@ namespace BLOG_COMM
             ((System.ComponentModel.ISupportInitialize)(this.cboNFriendMaxCnt)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDelay)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,5 +289,7 @@ namespace BLOG_COMM
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel3;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnAddNFriendCancel;
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel4;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel2;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cboDelay;
     }
 }

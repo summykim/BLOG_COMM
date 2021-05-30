@@ -64,12 +64,13 @@ namespace BLOG_COMM
 			ht.Add("grpNm", txtAddGrpNm.Text);
 			ht.Add("content", txtNFriendReqContent.Text);
 			ht.Add("strMaxCnt", cboNFriendMaxCnt.Text);
+			ht.Add("delay", cboDelay.Text);
 			BgWorker.RunWorkerAsync( ht);
 
 		}
 
 		//첫번째 글찾기
-		private void FindNFriendPostByKeyword(DoWorkEventArgs e,string keyword,string grpNm,string content,string strMaxCnt)
+		private void FindNFriendPostByKeyword(DoWorkEventArgs e,string keyword,string grpNm,string content,string strMaxCnt,string strDelay)
 		{
 			// 이웃블로그 댓글달기
 
@@ -91,8 +92,8 @@ namespace BLOG_COMM
 				int successCnt = 0;
 				int processCnt = 0;
 				int maxCnt = int.Parse(strMaxCnt);
-
-				while (true)
+				int delay = int.Parse(strDelay)*1000; 
+			  while (true)
               {
 				//CancellationPending 속성이 true로 set되었다면
 				if (BgWorker.CancellationPending == true)
@@ -107,6 +108,7 @@ namespace BLOG_COMM
 
 					Common._driver.SwitchTo().Window(tabs[1]);
 					Common._driver.Navigate().GoToUrl(searchBlogUrl);//블로그 이동
+					Thread.Sleep(delay);// 대기
 
 					//블로그 목록   찾기 	
 					var blogElements = Common._driver.FindElements(By.ClassName("list_search_post")); // row  추출
@@ -155,6 +157,7 @@ namespace BLOG_COMM
 						Common._driver.SwitchTo().Window(tabs[2]);
 						Common._driver.Navigate().GoToUrl(targetBlogUrl);// 타겟 블로그 이동
 						Common._driver.SwitchTo().Frame("mainFrame");// iframe 선택
+						Thread.Sleep(delay);// 대기
 
 						// 이웃추가 가능한지 확인 
 						var isAddFriend = Common.FindElement(By.CssSelector("#blog-profile > div > div.bg-body > div > div.btn_area > a > span"));
@@ -167,16 +170,19 @@ namespace BLOG_COMM
 
 						//이웃추가버튼 찾기 
 						var findBtn = Common.FindElement(By.XPath("//*[@id='blog-profile']/div/div[2]/div/div[3]/a"));
+
 						findBtn.Click();//이웃추가 클릭
-						Thread.Sleep(300);
+						Thread.Sleep(delay);// 대기
+
 						//팝업선택
 						Common._driver.SwitchTo().Window(Common._driver.WindowHandles.ToList().Last());
 
-						Thread.Sleep(300);
+						Thread.Sleep(delay);// 대기
+
 						//서로이웃 선택 옵션찾기
 						var findOpt = Common.FindElement(By.XPath("//*[@id='content']/div/form/fieldset/div[2]/div[1]/p/span[2]"));
+						
 						bool each_buddy_add = false;
-
 						if (findOpt != null)
 						{
 							Console.WriteLine("findOpt  disabled" + findOpt.GetAttribute("disabled"));
@@ -184,30 +190,33 @@ namespace BLOG_COMM
 							if (!"true".Equals(findOpt.GetAttribute("disabled")))
 							{
 								each_buddy_add = true;
-								findOpt.Click();// 서로이웃 옵션 선택							
-												//js.ExecuteScript("document.getElementById('each_buddy_add').checked = true;");
+								findOpt.Click();// 서로이웃 옵션 선택	
+								Thread.Sleep(delay);// 대기						
+								//js.ExecuteScript("document.getElementById('each_buddy_add').checked = true;");
 							}
-
-						}
-						else//이웃취소면  닫기
-						{
-
-							findOpt = Common.FindElement(By.XPath("//*[@id='buddy_delete']"));
-							if (findOpt != null)
-							{
-								//*[@id="content"]/div/form/fieldset/div[3]/a[1]
+							else
+                            {
 								Common._driver.Close();
 								//리스트 탭 이동
 								Common._driver.SwitchTo().Window(tabs[1]);
 								continue;
 							}
 
-
 						}
+						else//닫기
+						{
+								Common._driver.Close();
+								//리스트 탭 이동
+								Common._driver.SwitchTo().Window(tabs[1]);
+								continue;
+						}
+
+						
 
 						//다음버튼 찾기 
 						var nextBtn = Common.FindElement(By.ClassName("_buddyAddNext"));
 						if (nextBtn != null) nextBtn.Click();
+						Thread.Sleep(delay);// 대기						
 
 						//서로 이웃 신청중일때는   alert 창 표시됨	
 						try
@@ -227,6 +236,7 @@ namespace BLOG_COMM
 							if (cboList != null)
 							{
 								cboList.Click();
+								Thread.Sleep(delay);// 대기						
 
 
 								//그룹명 찾기
@@ -254,6 +264,7 @@ namespace BLOG_COMM
 								//다음버튼 이동 
 								nextBtn = Common.FindElement(By.ClassName("button_next"));
 								if (nextBtn != null) nextBtn.Click();
+								Thread.Sleep(delay);// 대기						
 
 
 
@@ -303,7 +314,8 @@ namespace BLOG_COMM
 			string grpNm = (string)ht["grpNm"];
 			string content = (string)ht["content"];
 			string strMaxCnt = (string)ht["strMaxCnt"];
-			FindNFriendPostByKeyword(e,keyword, grpNm, content, strMaxCnt);
+			string delay = (string)ht["delay"];
+			FindNFriendPostByKeyword(e,keyword, grpNm, content, strMaxCnt, delay);
 		}
 
 		// 백그라운드 작업 결과  화면 업데이트
