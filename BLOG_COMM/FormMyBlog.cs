@@ -344,42 +344,74 @@ namespace BLOG_COMM
 					if (Result != null) Result.Click();
 
 
-					var list = Common._driver.FindElementsByXPath("//*[@id='naverComment_201_" + blog_comment_id + "_wai_u_cbox_content_wrap_tabpanel']/ul/li");
+					//현재페이지 번호 가져오기 
+					string pageStr = "#naverComment_201_" + blog_comment_id + " > div > div.u_cbox_paginate > div > a"; 
+					var elPageNum =Common._driver.FindElementsByCssSelector(pageStr);
+					int maxPage = 1;
+                    if (elPageNum != null  && elPageNum.Count>0)
+                    {
+						maxPage = elPageNum.Count;
 
-					var index = 1;
-					foreach (var el in list)
-					{
-                        try { 
-							var elnick = el.FindElement(By.ClassName("u_cbox_nick"));
-							String nickname = elnick.Text;
+					}
 
-							elnick = el.FindElement(By.ClassName("u_cbox_thumb_wrap"));
-							String blogurl = elnick.GetAttribute("href");
+					//page loop
+					for(int curPage = maxPage; curPage >0; curPage--)
+                    {
+						var list = Common._driver.FindElementsByXPath("//*[@id='naverComment_201_" + blog_comment_id + "_wai_u_cbox_content_wrap_tabpanel']/ul/li");
 
+						var index = 1;
+						foreach (var el in list)
+						{
 
-							elnick = el.FindElement(By.ClassName("u_cbox_date"));
-							String update = elnick.Text;
+							try
+							{
+								IWebElement elnick = null;
+								elnick = el.FindElement(By.ClassName("u_cbox_nick"));
+								String nickname = elnick.Text;
 
-
-							elnick = el.FindElement(By.ClassName("u_cbox_contents"));
-							String content = elnick.Text;
-
-
-							string[] row = new string[] { blogurl, nickname, update, content };
-							string[] row2 = new string[] { blogurl, nickname };
+								elnick = el.FindElement(By.ClassName("u_cbox_thumb_wrap"));
+								String blogurl = elnick.GetAttribute("href");
 
 
-							List<string[]> ProgressObject = new List<string[]>();
-							ProgressObject.Add(row);
-							ProgressObject.Add(row2);
-							BgWorkerMyBlogReply.ReportProgress(index, ProgressObject);
-							index++;
-                        }
-                        catch (Exception ex)
+								elnick = el.FindElement(By.ClassName("u_cbox_date"));
+								String update = elnick.Text;
+
+
+								elnick = el.FindElement(By.ClassName("u_cbox_contents"));
+								String content = elnick.Text;
+
+
+								string[] row = new string[] { blogurl, nickname, update, content };
+								string[] row2 = new string[] { blogurl, nickname };
+
+
+								List<string[]> ProgressObject = new List<string[]>();
+								ProgressObject.Add(row);
+								ProgressObject.Add(row2);
+								BgWorkerMyBlogReply.ReportProgress(index, ProgressObject);
+								index++;
+							}
+							catch (Exception ex)
+							{
+								Common.log.Error(ex.Message);
+							}
+
+						}
+
+                        //이전페이지이동 //*[@id="naverComment_201_222382564876"]/div/div[4]/div/a[2]
+                        if (curPage > 1)
                         {
-							Common.log.Error(ex.Message);
-                        }
+							string targetLinkNum = curPage.ToString();
+							string xpathStr = "//*[@id='naverComment_201_" + blog_comment_id + "']/div/div[4]/div/a[" + targetLinkNum + "]";
+							Common.log.Debug(xpathStr);
+							var elPageMove = Common.FindElement(By.XPath(xpathStr));
+							if (elPageMove != null)
+							{
+								elPageMove.Click();
+								Thread.Sleep(1000);
+							}
 
+						}
 					}
 
 					break;

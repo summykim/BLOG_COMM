@@ -134,12 +134,7 @@ namespace BLOG_COMM
 				{
 					elFinded.Click();// 목록열기 클릭
                 }
-                else
-                {
-					Common.log.Debug("글이 하나도 없나봐요. 확인이 필요해요.");
-					BgWorker.ReportProgress(0, "글이존재하지 않나봐요.");
-					BgWorker.CancelAsync();//취소
-				}
+
 
 				BgWorker.ReportProgress(++pos, "");
 
